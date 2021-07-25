@@ -89,6 +89,10 @@ article h3 {
   color: #fff;
 }
 
+article .popover h3 {
+  color: #000;
+}
+
 article h4 {
   font-weight: 600;
   font-size: 14px;

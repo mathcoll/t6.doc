@@ -1321,13 +1321,6 @@ define({ "api": [
         "description": "<p>Alias of isPublic</p>"
       },
       {
-        "group": "meta",
-        "type": "Integer",
-        "optional": true,
-        "field": "meta.revision",
-        "description": "<p>If set to the current revision of the resource (before PUTing), the value is checked against the current revision in database.</p>"
-      },
-      {
         "group": "Body",
         "type": "String",
         "optional": true,
@@ -5069,13 +5062,6 @@ define({ "api": [
         "description": "<p>List of Object Ids</p>"
       },
       {
-        "group": "meta",
-        "type": "Integer",
-        "optional": true,
-        "field": "meta.revision",
-        "description": "<p>If set to the current revision of the resource (before PUTing), the value is checked against the current revision in database.</p>"
-      },
-      {
         "group": "Body",
         "type": "Object",
         "optional": true,
@@ -6958,13 +6944,6 @@ define({ "api": [
         "optional": true,
         "field": "active",
         "description": "<p>Status of the rule</p>"
-      },
-      {
-        "group": "meta",
-        "type": "Integer",
-        "optional": true,
-        "field": "meta.revision",
-        "description": "<p>If set to the current revision of the resource (before PUTing), the value is checked against the current revision in database.</p>"
       }
     ],
     "filename": "/home/mathieu/Projets/2019/internetcollaboratif.info/t6/routes/rules.js",
@@ -7962,7 +7941,9 @@ define({ "api": [
     "version": "2.0.1",
     "permission": [
       {
-        "name": "Admin"
+        "name": "AuthAdmin",
+        "title": "Admin access rights needed.",
+        "description": "<p>Only t6 Administrator users have permission to this Endpoint.</p>"
       }
     ],
     "body": [
@@ -8066,7 +8047,9 @@ define({ "api": [
     "version": "2.0.1",
     "permission": [
       {
-        "name": "Admin"
+        "name": "AuthAdmin",
+        "title": "Admin access rights needed.",
+        "description": "<p>Only t6 Administrator users have permission to this Endpoint.</p>"
       }
     ],
     "body": [
@@ -8223,7 +8206,9 @@ define({ "api": [
     "version": "2.0.1",
     "permission": [
       {
-        "name": "Admin"
+        "name": "AuthAdmin",
+        "title": "Admin access rights needed.",
+        "description": "<p>Only t6 Administrator users have permission to this Endpoint.</p>"
       }
     ],
     "parameter": {
@@ -8346,7 +8331,9 @@ define({ "api": [
     "version": "2.0.1",
     "permission": [
       {
-        "name": "Admin"
+        "name": "AuthAdmin",
+        "title": "Admin access rights needed.",
+        "description": "<p>Only t6 Administrator users have permission to this Endpoint.</p>"
       }
     ],
     "parameter": {
@@ -8469,7 +8456,9 @@ define({ "api": [
     "version": "2.0.1",
     "permission": [
       {
-        "name": "Admin"
+        "name": "AuthAdmin",
+        "title": "Admin access rights needed.",
+        "description": "<p>Only t6 Administrator users have permission to this Endpoint.</p>"
       }
     ],
     "filename": "/home/mathieu/Projets/2019/internetcollaboratif.info/t6/routes/index.js",
@@ -8557,7 +8546,9 @@ define({ "api": [
     "version": "2.0.1",
     "permission": [
       {
-        "name": "Admin"
+        "name": "AuthAdmin",
+        "title": "Admin access rights needed.",
+        "description": "<p>Only t6 Administrator users have permission to this Endpoint.</p>"
       }
     ],
     "parameter": {
@@ -8673,7 +8664,9 @@ define({ "api": [
     "version": "2.0.1",
     "permission": [
       {
-        "name": "Admin"
+        "name": "AuthAdmin",
+        "title": "Admin access rights needed.",
+        "description": "<p>Only t6 Administrator users have permission to this Endpoint.</p>"
       }
     ],
     "parameter": {
@@ -8842,7 +8835,9 @@ define({ "api": [
     "version": "2.0.1",
     "permission": [
       {
-        "name": "Admin"
+        "name": "AuthAdmin",
+        "title": "Admin access rights needed.",
+        "description": "<p>Only t6 Administrator users have permission to this Endpoint.</p>"
       }
     ],
     "parameter": {
@@ -8952,7 +8947,9 @@ define({ "api": [
     "version": "2.0.1",
     "permission": [
       {
-        "name": "Admin"
+        "name": "AuthAdmin",
+        "title": "Admin access rights needed.",
+        "description": "<p>Only t6 Administrator users have permission to this Endpoint.</p>"
       }
     ],
     "parameter": {
@@ -9061,7 +9058,9 @@ define({ "api": [
     "version": "2.0.1",
     "permission": [
       {
-        "name": "Admin"
+        "name": "AuthAdmin",
+        "title": "Admin access rights needed.",
+        "description": "<p>Only t6 Administrator users have permission to this Endpoint.</p>"
       }
     ],
     "filename": "/home/mathieu/Projets/2019/internetcollaboratif.info/t6/routes/notifications.js",
@@ -9160,7 +9159,9 @@ define({ "api": [
     "version": "2.0.1",
     "permission": [
       {
-        "name": "Admin"
+        "name": "AuthAdmin",
+        "title": "Admin access rights needed.",
+        "description": "<p>Only t6 Administrator users have permission to this Endpoint.</p>"
       }
     ],
     "filename": "/home/mathieu/Projets/2019/internetcollaboratif.info/t6/routes/notifications.js",
@@ -9259,7 +9260,9 @@ define({ "api": [
     "version": "2.0.1",
     "permission": [
       {
-        "name": "Admin"
+        "name": "AuthAdmin",
+        "title": "Admin access rights needed.",
+        "description": "<p>Only t6 Administrator users have permission to this Endpoint.</p>"
       }
     ],
     "filename": "/home/mathieu/Projets/2019/internetcollaboratif.info/t6/routes/notifications.js",
@@ -9440,7 +9443,9 @@ define({ "api": [
     },
     "permission": [
       {
-        "name": "Admin"
+        "name": "AuthAdmin",
+        "title": "Admin access rights needed.",
+        "description": "<p>Only t6 Administrator users have permission to this Endpoint.</p>"
       }
     ],
     "filename": "/home/mathieu/Projets/2019/internetcollaboratif.info/t6/routes/notifications.js",
@@ -9498,7 +9503,9 @@ define({ "api": [
     "version": "2.0.1",
     "permission": [
       {
-        "name": "Admin"
+        "name": "AuthAdmin",
+        "title": "Admin access rights needed.",
+        "description": "<p>Only t6 Administrator users have permission to this Endpoint.</p>"
       }
     ],
     "filename": "/home/mathieu/Projets/2019/internetcollaboratif.info/t6/routes/notifications.js",
@@ -9597,7 +9604,9 @@ define({ "api": [
     "version": "2.0.1",
     "permission": [
       {
-        "name": "Admin"
+        "name": "AuthAdmin",
+        "title": "Admin access rights needed.",
+        "description": "<p>Only t6 Administrator users have permission to this Endpoint.</p>"
       }
     ],
     "body": [
@@ -9734,7 +9743,9 @@ define({ "api": [
     "version": "2.0.1",
     "permission": [
       {
-        "name": "Admin"
+        "name": "AuthAdmin",
+        "title": "Admin access rights needed.",
+        "description": "<p>Only t6 Administrator users have permission to this Endpoint.</p>"
       }
     ],
     "filename": "/home/mathieu/Projets/2019/internetcollaboratif.info/t6/routes/notifications.js",
@@ -9833,7 +9844,9 @@ define({ "api": [
     "version": "2.0.1",
     "permission": [
       {
-        "name": "Admin"
+        "name": "AuthAdmin",
+        "title": "Admin access rights needed.",
+        "description": "<p>Only t6 Administrator users have permission to this Endpoint.</p>"
       }
     ],
     "filename": "/home/mathieu/Projets/2019/internetcollaboratif.info/t6/routes/notifications.js",
@@ -9932,7 +9945,9 @@ define({ "api": [
     "version": "2.0.1",
     "permission": [
       {
-        "name": "Admin"
+        "name": "AuthAdmin",
+        "title": "Admin access rights needed.",
+        "description": "<p>Only t6 Administrator users have permission to this Endpoint.</p>"
       }
     ],
     "body": [
@@ -10061,7 +10076,9 @@ define({ "api": [
     "version": "2.0.1",
     "permission": [
       {
-        "name": "Admin"
+        "name": "AuthAdmin",
+        "title": "Admin access rights needed.",
+        "description": "<p>Only t6 Administrator users have permission to this Endpoint.</p>"
       }
     ],
     "filename": "/home/mathieu/Projets/2019/internetcollaboratif.info/t6/routes/notifications.js",
@@ -10160,7 +10177,9 @@ define({ "api": [
     "version": "2.0.1",
     "permission": [
       {
-        "name": "Admin"
+        "name": "AuthAdmin",
+        "title": "Admin access rights needed.",
+        "description": "<p>Only t6 Administrator users have permission to this Endpoint.</p>"
       }
     ],
     "filename": "/home/mathieu/Projets/2019/internetcollaboratif.info/t6/routes/notifications.js",
@@ -12131,7 +12150,9 @@ define({ "api": [
     "version": "2.0.1",
     "permission": [
       {
-        "name": "Admin"
+        "name": "AuthAdmin",
+        "title": "Admin access rights needed.",
+        "description": "<p>Only t6 Administrator users have permission to this Endpoint.</p>"
       }
     ],
     "filename": "/home/mathieu/Projets/2019/internetcollaboratif.info/t6/routes/users.js",
@@ -12348,7 +12369,9 @@ define({ "api": [
     "version": "2.0.1",
     "permission": [
       {
-        "name": "Admin"
+        "name": "AuthAdmin",
+        "title": "Admin access rights needed.",
+        "description": "<p>Only t6 Administrator users have permission to this Endpoint.</p>"
       }
     ],
     "filename": "/home/mathieu/Projets/2019/internetcollaboratif.info/t6/routes/users.js",
@@ -12447,7 +12470,9 @@ define({ "api": [
     "version": "2.0.1",
     "permission": [
       {
-        "name": "Admin"
+        "name": "AuthAdmin",
+        "title": "Admin access rights needed.",
+        "description": "<p>Only t6 Administrator users have permission to this Endpoint.</p>"
       }
     ],
     "filename": "/home/mathieu/Projets/2019/internetcollaboratif.info/t6/routes/users.js",
