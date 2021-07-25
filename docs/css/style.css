@@ -64,7 +64,7 @@ section h1 {
   font-size: 24px;
   line-height: 40px;
   padding-bottom: 14px;
-  margin: 0 0 20px 0;
+  margin: 0 0 20px 10px;
   padding: 0;
 }
 
@@ -86,6 +86,7 @@ article h3 {
   font-size: 16px;
   line-height: 18px;
   margin: 0 0 10px 0;
+  color: #fff;
 }
 
 article h4 {
@@ -285,7 +286,6 @@ pre code.sample-request-response-json {
 
 #project {
   padding: 10px 20px;
-  border-bottom: 1px solid #ebebeb;
 }
 
 .form-group {
@@ -396,7 +396,7 @@ pre code.sample-request-response-json {
 
 .sidenav > li > a:hover {
   background-color: transparent;
-  border-left: 3px solid #0088cc;
+  border-left: 3px solid #795548;
   color: #000;
 }
 
@@ -416,7 +416,7 @@ pre code.sample-request-response-json {
 .sidenav > li.active > a {
   position: relative;
   z-index: 2;
-  border-left: 3px solid #0088cc;
+  border-left: 3px solid #795548;
   color: #000;
 }
 
@@ -676,7 +676,6 @@ ul.nav-tabs > li > a {
 }
 
 .tab-content {
-  background: #373D43;
   padding: 0 20px;
   margin: 0 -20px;
 }

@@ -129,6 +129,34 @@ define({ "api": [
         "optional": true,
         "field": "influx_db_cloud",
         "description": "<p>influx_db_cloud object to define what bucket should be used to save data on the cloud</p>"
+      },
+      {
+        "group": "Body",
+        "type": "String",
+        "optional": false,
+        "field": "influx_db_cloud.token",
+        "description": "<p>Authentication token ID</p>"
+      },
+      {
+        "group": "Body",
+        "type": "String",
+        "optional": false,
+        "field": "influx_db_cloud.org",
+        "description": "<p>Organization ID</p>"
+      },
+      {
+        "group": "Body",
+        "type": "String",
+        "optional": false,
+        "field": "influx_db_cloud.url",
+        "description": "<p>HTTP address of InfluxDB</p>"
+      },
+      {
+        "group": "Body",
+        "type": "String",
+        "optional": false,
+        "field": "influx_db_cloud.bucket",
+        "description": "<p>Bucket name</p>"
       }
     ],
     "filename": "/home/mathieu/Projets/2019/internetcollaboratif.info/t6/routes/data.js",
@@ -175,24 +203,24 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "200",
-            "description": "<p>Success</p>"
+            "description": "<p>Server successfully understood the request</p>"
           },
           {
             "group": "Success 200",
             "optional": false,
             "field": "201",
-            "description": "<p>Created</p>"
+            "description": "<p>Creation of a new resource was successful</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "200 Response",
-          "content": "HTTP/1.1 200 Success\n{\n}",
+          "title": "200 Success",
+          "content": "HTTP/1.1 200 Response\n{\n}",
           "type": "json"
         },
         {
-          "title": "201 Response",
+          "title": "201 Created",
           "content": "HTTP/1.1 201 Created\n{\n  \"message\": \"Created\",\n  \"id\": \"\",\n  \"code\": 201\n}",
           "type": "json"
         }
@@ -205,37 +233,31 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "401",
-            "description": "<p>Require a Bearer Authentication.</p>"
-          },
-          {
-            "group": "Error 4xx",
-            "optional": false,
-            "field": "401sign",
-            "description": "<p>Signature is invalid and required.</p>"
+            "description": "<p>Require a Bearer Authentication</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "405",
-            "description": "<p>Method Not Allowed - API endpoint does not accept the method used.</p>"
+            "description": "<p>Method Not Allowed ; API endpoint does not accept the method used</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "412",
-            "description": "<p>Precondition Failed.</p>"
+            "description": "<p>Precondition Failed</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "429",
-            "description": "<p>Too Many Requests.</p>"
+            "description": "<p>Too Many Requests</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "500",
-            "description": "<p>Internal Error.</p>"
+            "description": "<p>Internal Server Error</p>"
           }
         ]
       },
@@ -473,14 +495,14 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "200",
-            "description": "<p>Success</p>"
+            "description": "<p>Server successfully understood the request</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "200 Response",
-          "content": "HTTP/1.1 200 Success\n{\n}",
+          "title": "200 Success",
+          "content": "HTTP/1.1 200 Response\n{\n}",
           "type": "json"
         }
       ]
@@ -529,31 +551,31 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "401",
-            "description": "<p>Require a Bearer Authentication.</p>"
+            "description": "<p>Require a Bearer Authentication</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "404",
-            "description": "<p>Not Found - We couldn't find the resource you are trying to access.</p>"
+            "description": "<p>Not Found We couldn't find the resource you are trying to access</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "405",
-            "description": "<p>Method Not Allowed - API endpoint does not accept the method used.</p>"
+            "description": "<p>Method Not Allowed ; API endpoint does not accept the method used</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "429",
-            "description": "<p>Too Many Requests.</p>"
+            "description": "<p>Too Many Requests</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "500",
-            "description": "<p>Internal Error.</p>"
+            "description": "<p>Internal Server Error</p>"
           }
         ]
       },
@@ -650,13 +672,13 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "201",
-            "description": "<p>Created</p>"
+            "description": "<p>Creation of a new resource was successful</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "201 Response",
+          "title": "201 Created",
           "content": "HTTP/1.1 201 Created\n{\n  \"message\": \"Created\",\n  \"id\": \"\",\n  \"code\": 201\n}",
           "type": "json"
         }
@@ -669,25 +691,25 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "403",
-            "description": "<p>Forbidden - Token used in transaction is not valid. Check your token and/or permission.</p>"
+            "description": "<p>Forbidden Token used in transaction is not valid - check your token and/or permission</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "404",
-            "description": "<p>Not Found - We couldn't find the resource you are trying to access.</p>"
+            "description": "<p>Not Found We couldn't find the resource you are trying to access</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "412",
-            "description": "<p>Precondition Failed.</p>"
+            "description": "<p>Precondition Failed</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "429",
-            "description": "<p>Too Many Requests.</p>"
+            "description": "<p>Too Many Requests</p>"
           }
         ]
       },
@@ -909,13 +931,13 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "201",
-            "description": "<p>Created</p>"
+            "description": "<p>Creation of a new resource was successful</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "201 Response",
+          "title": "201 Created",
           "content": "HTTP/1.1 201 Created\n{\n  \"message\": \"Created\",\n  \"id\": \"\",\n  \"code\": 201\n}",
           "type": "json"
         }
@@ -928,13 +950,13 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "403",
-            "description": "<p>Forbidden - Token used in transaction is not valid. Check your token and/or permission.</p>"
+            "description": "<p>Forbidden Token used in transaction is not valid - check your token and/or permission</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "429",
-            "description": "<p>Too Many Requests.</p>"
+            "description": "<p>Too Many Requests</p>"
           }
         ]
       },
@@ -967,7 +989,7 @@ define({ "api": [
             "type": "uuid-v4",
             "optional": false,
             "field": "object_id",
-            "description": "<p>Object Id</p>"
+            "description": "<p>Object Id to be deleted</p>"
           }
         ]
       }
@@ -1016,14 +1038,14 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "200",
-            "description": "<p>Success</p>"
+            "description": "<p>Server successfully understood the request</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "200 Response",
-          "content": "HTTP/1.1 200 Success\n{\n}",
+          "title": "200 Success",
+          "content": "HTTP/1.1 200 Response\n{\n}",
           "type": "json"
         }
       ]
@@ -1035,13 +1057,13 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "403",
-            "description": "<p>Forbidden - Token used in transaction is not valid. Check your token and/or permission.</p>"
+            "description": "<p>Forbidden Token used in transaction is not valid - check your token and/or permission</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "404",
-            "description": "<p>Not Found - We couldn't find the resource you are trying to access.</p>"
+            "description": "<p>Not Found We couldn't find the resource you are trying to access</p>"
           }
         ]
       },
@@ -1139,13 +1161,13 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "201",
-            "description": "<p>Created</p>"
+            "description": "<p>Creation of a new resource was successful</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "201 Response",
+          "title": "201 Created",
           "content": "HTTP/1.1 201 Created\n{\n  \"message\": \"Created\",\n  \"id\": \"\",\n  \"code\": 201\n}",
           "type": "json"
         }
@@ -1158,25 +1180,25 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "401",
-            "description": "<p>Require a Bearer Authentication.</p>"
+            "description": "<p>Require a Bearer Authentication</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "403",
-            "description": "<p>Forbidden - Token used in transaction is not valid. Check your token and/or permission.</p>"
+            "description": "<p>Forbidden Token used in transaction is not valid - check your token and/or permission</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "404",
-            "description": "<p>Not Found - We couldn't find the resource you are trying to access.</p>"
+            "description": "<p>Not Found We couldn't find the resource you are trying to access</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "405",
-            "description": "<p>Method Not Allowed - API endpoint does not accept the method used.</p>"
+            "description": "<p>Method Not Allowed ; API endpoint does not accept the method used</p>"
           }
         ]
       },
@@ -1423,14 +1445,14 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "200",
-            "description": "<p>Success</p>"
+            "description": "<p>Server successfully understood the request</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "200 Response",
-          "content": "HTTP/1.1 200 Success\n{\n}",
+          "title": "200 Success",
+          "content": "HTTP/1.1 200 Response\n{\n}",
           "type": "json"
         }
       ]
@@ -1442,25 +1464,25 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "400",
-            "description": "<p>Bad Request, require a Bearer Authentication or revision is incorrect.</p>"
+            "description": "<p>Bad Request, require a Bearer Authentication or revision is incorrect</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "401",
-            "description": "<p>Require a Bearer Authentication.</p>"
+            "description": "<p>Require a Bearer Authentication</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "404",
-            "description": "<p>Not Found - We couldn't find the resource you are trying to access.</p>"
+            "description": "<p>Not Found We couldn't find the resource you are trying to access</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "409",
-            "description": "<p>conflict.</p>"
+            "description": "<p>Conflict</p>"
           }
         ]
       },
@@ -1559,14 +1581,14 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "200",
-            "description": "<p>Success</p>"
+            "description": "<p>Server successfully understood the request</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "200 Response",
-          "content": "HTTP/1.1 200 Success\n{\n}",
+          "title": "200 Success",
+          "content": "HTTP/1.1 200 Response\n{\n}",
           "type": "json"
         }
       ]
@@ -1578,25 +1600,25 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "401",
-            "description": "<p>Require a Bearer Authentication.</p>"
+            "description": "<p>Require a Bearer Authentication</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "403",
-            "description": "<p>Forbidden - Token used in transaction is not valid. Check your token and/or permission.</p>"
+            "description": "<p>Forbidden Token used in transaction is not valid - check your token and/or permission</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "404",
-            "description": "<p>Not Found - We couldn't find the resource you are trying to access.</p>"
+            "description": "<p>Not Found We couldn't find the resource you are trying to access</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "405",
-            "description": "<p>Method Not Allowed - API endpoint does not accept the method used.</p>"
+            "description": "<p>Method Not Allowed ; API endpoint does not accept the method used</p>"
           }
         ]
       },
@@ -1688,13 +1710,13 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "201",
-            "description": "<p>Created</p>"
+            "description": "<p>Creation of a new resource was successful</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "201 Response",
+          "title": "201 Created",
           "content": "HTTP/1.1 201 Created\n{\n  \"message\": \"Created\",\n  \"id\": \"\",\n  \"code\": 201\n}",
           "type": "json"
         }
@@ -1707,13 +1729,13 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "429",
-            "description": "<p>Too Many Requests.</p>"
+            "description": "<p>Too Many Requests</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "500",
-            "description": "<p>Internal Error.</p>"
+            "description": "<p>Internal Server Error</p>"
           }
         ]
       },
@@ -1795,13 +1817,13 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "201",
-            "description": "<p>Created</p>"
+            "description": "<p>Creation of a new resource was successful</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "201 Response",
+          "title": "201 Created",
           "content": "HTTP/1.1 201 Created\n{\n  \"message\": \"Created\",\n  \"id\": \"\",\n  \"code\": 201\n}",
           "type": "json"
         }
@@ -1814,13 +1836,13 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "429",
-            "description": "<p>Too Many Requests.</p>"
+            "description": "<p>Too Many Requests</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "500",
-            "description": "<p>Internal Error.</p>"
+            "description": "<p>Internal Server Error</p>"
           }
         ]
       },
@@ -1909,14 +1931,14 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "200",
-            "description": "<p>Success</p>"
+            "description": "<p>Server successfully understood the request</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "200 Response",
-          "content": "HTTP/1.1 200 Success\n{\n}",
+          "title": "200 Success",
+          "content": "HTTP/1.1 200 Response\n{\n}",
           "type": "json"
         }
       ]
@@ -1928,31 +1950,31 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "401",
-            "description": "<p>Require a Bearer Authentication.</p>"
+            "description": "<p>Require a Bearer Authentication</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "404",
-            "description": "<p>Not Found - We couldn't find the resource you are trying to access.</p>"
+            "description": "<p>Not Found We couldn't find the resource you are trying to access</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "405",
-            "description": "<p>Method Not Allowed - API endpoint does not accept the method used.</p>"
+            "description": "<p>Method Not Allowed ; API endpoint does not accept the method used</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "429",
-            "description": "<p>Too Many Requests.</p>"
+            "description": "<p>Too Many Requests</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "500",
-            "description": "<p>Internal Error.</p>"
+            "description": "<p>Internal Server Error</p>"
           }
         ]
       },
@@ -2056,14 +2078,14 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "200",
-            "description": "<p>Success</p>"
+            "description": "<p>Server successfully understood the request</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "200 Response",
-          "content": "HTTP/1.1 200 Success\n{\n}",
+          "title": "200 Success",
+          "content": "HTTP/1.1 200 Response\n{\n}",
           "type": "json"
         }
       ]
@@ -2075,31 +2097,31 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "401",
-            "description": "<p>Require a Bearer Authentication.</p>"
+            "description": "<p>Require a Bearer Authentication</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "404",
-            "description": "<p>Not Found - We couldn't find the resource you are trying to access.</p>"
+            "description": "<p>Not Found We couldn't find the resource you are trying to access</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "405",
-            "description": "<p>Method Not Allowed - API endpoint does not accept the method used.</p>"
+            "description": "<p>Method Not Allowed ; API endpoint does not accept the method used</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "429",
-            "description": "<p>Too Many Requests.</p>"
+            "description": "<p>Too Many Requests</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "500",
-            "description": "<p>Internal Error.</p>"
+            "description": "<p>Internal Server Error</p>"
           }
         ]
       },
@@ -2196,14 +2218,14 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "200",
-            "description": "<p>Success</p>"
+            "description": "<p>Server successfully understood the request</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "200 Response",
-          "content": "HTTP/1.1 200 Success\n{\n}",
+          "title": "200 Success",
+          "content": "HTTP/1.1 200 Response\n{\n}",
           "type": "json"
         }
       ]
@@ -2215,31 +2237,31 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "401",
-            "description": "<p>Require a Bearer Authentication.</p>"
+            "description": "<p>Require a Bearer Authentication</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "404",
-            "description": "<p>Not Found - We couldn't find the resource you are trying to access.</p>"
+            "description": "<p>Not Found We couldn't find the resource you are trying to access</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "405",
-            "description": "<p>Method Not Allowed - API endpoint does not accept the method used.</p>"
+            "description": "<p>Method Not Allowed ; API endpoint does not accept the method used</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "429",
-            "description": "<p>Too Many Requests.</p>"
+            "description": "<p>Too Many Requests</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "500",
-            "description": "<p>Internal Error.</p>"
+            "description": "<p>Internal Server Error</p>"
           }
         ]
       },
@@ -2357,14 +2379,14 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "200",
-            "description": "<p>Success</p>"
+            "description": "<p>Server successfully understood the request</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "200 Response",
-          "content": "HTTP/1.1 200 Success\n{\n}",
+          "title": "200 Success",
+          "content": "HTTP/1.1 200 Response\n{\n}",
           "type": "json"
         }
       ]
@@ -2376,31 +2398,31 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "401",
-            "description": "<p>Require a Bearer Authentication.</p>"
+            "description": "<p>Require a Bearer Authentication</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "404",
-            "description": "<p>Not Found - We couldn't find the resource you are trying to access.</p>"
+            "description": "<p>Not Found We couldn't find the resource you are trying to access</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "405",
-            "description": "<p>Method Not Allowed - API endpoint does not accept the method used.</p>"
+            "description": "<p>Method Not Allowed ; API endpoint does not accept the method used</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "429",
-            "description": "<p>Too Many Requests.</p>"
+            "description": "<p>Too Many Requests</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "500",
-            "description": "<p>Internal Error.</p>"
+            "description": "<p>Internal Server Error</p>"
           }
         ]
       },
@@ -2454,14 +2476,14 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "200",
-            "description": "<p>Success</p>"
+            "description": "<p>Server successfully understood the request</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "200 Response",
-          "content": "HTTP/1.1 200 Success\n{\n}",
+          "title": "200 Success",
+          "content": "HTTP/1.1 200 Response\n{\n}",
           "type": "json"
         }
       ]
@@ -2538,13 +2560,13 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "201",
-            "description": "<p>Created</p>"
+            "description": "<p>Creation of a new resource was successful</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "201 Response",
+          "title": "201 Created",
           "content": "HTTP/1.1 201 Created\n{\n  \"message\": \"Created\",\n  \"id\": \"\",\n  \"code\": 201\n}",
           "type": "json"
         }
@@ -2557,19 +2579,19 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "412",
-            "description": "<p>Precondition Failed.</p>"
+            "description": "<p>Precondition Failed</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "429",
-            "description": "<p>Too Many Requests.</p>"
+            "description": "<p>Too Many Requests</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "500",
-            "description": "<p>Internal Error.</p>"
+            "description": "<p>Internal Server Error</p>"
           }
         ]
       },
@@ -2643,14 +2665,14 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "200",
-            "description": "<p>Success</p>"
+            "description": "<p>Server successfully understood the request</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "200 Response",
-          "content": "HTTP/1.1 200 Success\n{\n}",
+          "title": "200 Success",
+          "content": "HTTP/1.1 200 Response\n{\n}",
           "type": "json"
         }
       ]
@@ -2662,7 +2684,7 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "404",
-            "description": "<p>Not Found - We couldn't find the resource you are trying to access.</p>"
+            "description": "<p>Not Found We couldn't find the resource you are trying to access</p>"
           }
         ]
       },
@@ -2793,14 +2815,14 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "200",
-            "description": "<p>Success</p>"
+            "description": "<p>Server successfully understood the request</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "200 Response",
-          "content": "HTTP/1.1 200 Success\n{\n}",
+          "title": "200 Success",
+          "content": "HTTP/1.1 200 Response\n{\n}",
           "type": "json"
         }
       ]
@@ -2849,31 +2871,31 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "401",
-            "description": "<p>Require a Bearer Authentication.</p>"
+            "description": "<p>Require a Bearer Authentication</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "404",
-            "description": "<p>Not Found - We couldn't find the resource you are trying to access.</p>"
+            "description": "<p>Not Found We couldn't find the resource you are trying to access</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "405",
-            "description": "<p>Method Not Allowed - API endpoint does not accept the method used.</p>"
+            "description": "<p>Method Not Allowed ; API endpoint does not accept the method used</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "429",
-            "description": "<p>Too Many Requests.</p>"
+            "description": "<p>Too Many Requests</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "500",
-            "description": "<p>Internal Error.</p>"
+            "description": "<p>Internal Server Error</p>"
           }
         ]
       },
@@ -3117,19 +3139,19 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "200",
-            "description": "<p>Success</p>"
+            "description": "<p>Server successfully understood the request</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "200 Response",
-          "content": "HTTP/1.1 200 Success\n{\n}",
+          "title": "200 Success",
+          "content": "HTTP/1.1 200 Response\n{\n}",
           "type": "json"
         },
         {
-          "title": "200 Response",
-          "content": "HTTP/1.1 200 Success\n{\n}",
+          "title": "200 Success",
+          "content": "HTTP/1.1 200 Response\n{\n}",
           "type": "json"
         }
       ]
@@ -3178,31 +3200,31 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "404",
-            "description": "<p>Not Found - We couldn't find the resource you are trying to access.</p>"
+            "description": "<p>Not Found We couldn't find the resource you are trying to access</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "401",
-            "description": "<p>Require a Bearer Authentication.</p>"
+            "description": "<p>Require a Bearer Authentication</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "405",
-            "description": "<p>Method Not Allowed - API endpoint does not accept the method used.</p>"
+            "description": "<p>Method Not Allowed ; API endpoint does not accept the method used</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "429",
-            "description": "<p>Too Many Requests.</p>"
+            "description": "<p>Too Many Requests</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "500",
-            "description": "<p>Internal Error.</p>"
+            "description": "<p>Internal Server Error</p>"
           }
         ]
       },
@@ -3349,14 +3371,14 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "200",
-            "description": "<p>Success</p>"
+            "description": "<p>Server successfully understood the request</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "200 Response",
-          "content": "HTTP/1.1 200 Success\n{\n}",
+          "title": "200 Success",
+          "content": "HTTP/1.1 200 Response\n{\n}",
           "type": "json"
         }
       ]
@@ -3405,31 +3427,31 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "401",
-            "description": "<p>Require a Bearer Authentication.</p>"
+            "description": "<p>Require a Bearer Authentication</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "404",
-            "description": "<p>Not Found - We couldn't find the resource you are trying to access.</p>"
+            "description": "<p>Not Found We couldn't find the resource you are trying to access</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "405",
-            "description": "<p>Method Not Allowed - API endpoint does not accept the method used.</p>"
+            "description": "<p>Method Not Allowed ; API endpoint does not accept the method used</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "429",
-            "description": "<p>Too Many Requests.</p>"
+            "description": "<p>Too Many Requests</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "500",
-            "description": "<p>Internal Error.</p>"
+            "description": "<p>Internal Server Error</p>"
           }
         ]
       },
@@ -3605,14 +3627,14 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "200",
-            "description": "<p>Success</p>"
+            "description": "<p>Server successfully understood the request</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "200 Response",
-          "content": "HTTP/1.1 200 Success\n{\n}",
+          "title": "200 Success",
+          "content": "HTTP/1.1 200 Response\n{\n}",
           "type": "json"
         }
       ]
@@ -3661,31 +3683,31 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "401",
-            "description": "<p>Require a Bearer Authentication.</p>"
+            "description": "<p>Require a Bearer Authentication</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "404",
-            "description": "<p>Not Found - We couldn't find the resource you are trying to access.</p>"
+            "description": "<p>Not Found We couldn't find the resource you are trying to access</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "405",
-            "description": "<p>Method Not Allowed - API endpoint does not accept the method used.</p>"
+            "description": "<p>Method Not Allowed ; API endpoint does not accept the method used</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "429",
-            "description": "<p>Too Many Requests.</p>"
+            "description": "<p>Too Many Requests</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "500",
-            "description": "<p>Internal Error.</p>"
+            "description": "<p>Internal Server Error</p>"
           }
         ]
       },
@@ -3825,14 +3847,14 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "200",
-            "description": "<p>Success</p>"
+            "description": "<p>Server successfully understood the request</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "200 Response",
-          "content": "HTTP/1.1 200 Success\n{\n}",
+          "title": "200 Success",
+          "content": "HTTP/1.1 200 Response\n{\n}",
           "type": "json"
         }
       ]
@@ -3881,31 +3903,31 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "401",
-            "description": "<p>Require a Bearer Authentication.</p>"
+            "description": "<p>Require a Bearer Authentication</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "404",
-            "description": "<p>Not Found - We couldn't find the resource you are trying to access.</p>"
+            "description": "<p>Not Found We couldn't find the resource you are trying to access</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "405",
-            "description": "<p>Method Not Allowed - API endpoint does not accept the method used.</p>"
+            "description": "<p>Method Not Allowed ; API endpoint does not accept the method used</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "429",
-            "description": "<p>Too Many Requests.</p>"
+            "description": "<p>Too Many Requests</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "500",
-            "description": "<p>Internal Error.</p>"
+            "description": "<p>Internal Server Error</p>"
           }
         ]
       },
@@ -4002,14 +4024,14 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "200",
-            "description": "<p>Success</p>"
+            "description": "<p>Server successfully understood the request</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "200 Response",
-          "content": "HTTP/1.1 200 Success\n{\n}",
+          "title": "200 Success",
+          "content": "HTTP/1.1 200 Response\n{\n}",
           "type": "json"
         }
       ]
@@ -4021,31 +4043,31 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "401",
-            "description": "<p>Require a Bearer Authentication.</p>"
+            "description": "<p>Require a Bearer Authentication</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "404",
-            "description": "<p>Not Found - We couldn't find the resource you are trying to access.</p>"
+            "description": "<p>Not Found We couldn't find the resource you are trying to access</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "405",
-            "description": "<p>Method Not Allowed - API endpoint does not accept the method used.</p>"
+            "description": "<p>Method Not Allowed ; API endpoint does not accept the method used</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "429",
-            "description": "<p>Too Many Requests.</p>"
+            "description": "<p>Too Many Requests</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "500",
-            "description": "<p>Internal Error.</p>"
+            "description": "<p>Internal Server Error</p>"
           }
         ]
       },
@@ -4149,14 +4171,14 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "200",
-            "description": "<p>Success</p>"
+            "description": "<p>Server successfully understood the request</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "200 Response",
-          "content": "HTTP/1.1 200 Success\n{\n}",
+          "title": "200 Success",
+          "content": "HTTP/1.1 200 Response\n{\n}",
           "type": "json"
         }
       ]
@@ -4168,31 +4190,31 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "401",
-            "description": "<p>Require a Bearer Authentication.</p>"
+            "description": "<p>Require a Bearer Authentication</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "404",
-            "description": "<p>Not Found - We couldn't find the resource you are trying to access.</p>"
+            "description": "<p>Not Found We couldn't find the resource you are trying to access</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "405",
-            "description": "<p>Method Not Allowed - API endpoint does not accept the method used.</p>"
+            "description": "<p>Method Not Allowed ; API endpoint does not accept the method used</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "429",
-            "description": "<p>Too Many Requests.</p>"
+            "description": "<p>Too Many Requests</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "500",
-            "description": "<p>Internal Error.</p>"
+            "description": "<p>Internal Server Error</p>"
           }
         ]
       },
@@ -4296,14 +4318,14 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "200",
-            "description": "<p>Success</p>"
+            "description": "<p>Server successfully understood the request</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "200 Response",
-          "content": "HTTP/1.1 200 Success\n{\n}",
+          "title": "200 Success",
+          "content": "HTTP/1.1 200 Response\n{\n}",
           "type": "json"
         }
       ]
@@ -4315,31 +4337,31 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "401",
-            "description": "<p>Require a Bearer Authentication.</p>"
+            "description": "<p>Require a Bearer Authentication</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "404",
-            "description": "<p>Not Found - We couldn't find the resource you are trying to access.</p>"
+            "description": "<p>Not Found We couldn't find the resource you are trying to access</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "405",
-            "description": "<p>Method Not Allowed - API endpoint does not accept the method used.</p>"
+            "description": "<p>Method Not Allowed ; API endpoint does not accept the method used</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "429",
-            "description": "<p>Too Many Requests.</p>"
+            "description": "<p>Too Many Requests</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "500",
-            "description": "<p>Internal Error.</p>"
+            "description": "<p>Internal Server Error</p>"
           }
         ]
       },
@@ -4453,14 +4475,14 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "200",
-            "description": "<p>Success</p>"
+            "description": "<p>Server successfully understood the request</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "200 Response",
-          "content": "HTTP/1.1 200 Success\n{\n}",
+          "title": "200 Success",
+          "content": "HTTP/1.1 200 Response\n{\n}",
           "type": "json"
         }
       ]
@@ -4509,31 +4531,31 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "401",
-            "description": "<p>Require a Bearer Authentication.</p>"
+            "description": "<p>Require a Bearer Authentication</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "404",
-            "description": "<p>Not Found - We couldn't find the resource you are trying to access.</p>"
+            "description": "<p>Not Found We couldn't find the resource you are trying to access</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "405",
-            "description": "<p>Method Not Allowed - API endpoint does not accept the method used.</p>"
+            "description": "<p>Method Not Allowed ; API endpoint does not accept the method used</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "429",
-            "description": "<p>Too Many Requests.</p>"
+            "description": "<p>Too Many Requests</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "500",
-            "description": "<p>Internal Error.</p>"
+            "description": "<p>Internal Server Error</p>"
           }
         ]
       },
@@ -4617,14 +4639,14 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "200",
-            "description": "<p>Success</p>"
+            "description": "<p>Server successfully understood the request</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "200 Response",
-          "content": "HTTP/1.1 200 Success\n{\n}",
+          "title": "200 Success",
+          "content": "HTTP/1.1 200 Response\n{\n}",
           "type": "json"
         }
       ]
@@ -4636,7 +4658,7 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "404",
-            "description": "<p>Not Found - We couldn't find the resource you are trying to access.</p>"
+            "description": "<p>Not Found We couldn't find the resource you are trying to access</p>"
           }
         ]
       },
@@ -4796,13 +4818,13 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "201",
-            "description": "<p>Created</p>"
+            "description": "<p>Creation of a new resource was successful</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "201 Response",
+          "title": "201 Created",
           "content": "HTTP/1.1 201 Created\n{\n  \"message\": \"Created\",\n  \"id\": \"\",\n  \"code\": 201\n}",
           "type": "json"
         }
@@ -4815,13 +4837,13 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "400",
-            "description": "<p>Bad Request, require a Bearer Authentication or revision is incorrect.</p>"
+            "description": "<p>Bad Request, require a Bearer Authentication or revision is incorrect</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "429",
-            "description": "<p>Too Many Requests.</p>"
+            "description": "<p>Too Many Requests</p>"
           }
         ]
       },
@@ -4854,7 +4876,7 @@ define({ "api": [
             "type": "uuid-v4",
             "optional": false,
             "field": "flow_id",
-            "description": "<p>Flow Id</p>"
+            "description": "<p>Flow Id to be deleted</p>"
           }
         ]
       }
@@ -4895,6 +4917,55 @@ define({ "api": [
           }
         ]
       }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "optional": false,
+            "field": "200",
+            "description": "<p>Server successfully understood the request</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "200 Success",
+          "content": "HTTP/1.1 200 Response\n{\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "403",
+            "description": "<p>Forbidden Token used in transaction is not valid - check your token and/or permission</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "404",
+            "description": "<p>Not Found We couldn't find the resource you are trying to access</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "403 Response",
+          "content": "HTTP/1.1 403 Forbidden\n{\n  \"message\": \"Forbidden\",\n  \"id\": \"\",\n  \"code\": 403\n}",
+          "type": "json"
+        },
+        {
+          "title": "404 Response",
+          "content": "HTTP/1.1 404 Not Found\n{\n  \"message\": \"Not Found\",\n  \"id\": \"\",\n  \"code\": 404\n}",
+          "type": "json"
+        }
+      ]
     }
   },
   {
@@ -5056,14 +5127,14 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "200",
-            "description": "<p>Success</p>"
+            "description": "<p>Server successfully understood the request</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "200 Response",
-          "content": "HTTP/1.1 200 Success\n{\n}",
+          "title": "200 Success",
+          "content": "HTTP/1.1 200 Response\n{\n}",
           "type": "json"
         }
       ]
@@ -5075,49 +5146,49 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "400",
-            "description": "<p>Bad Request, require a Bearer Authentication or revision is incorrect.</p>"
+            "description": "<p>Bad Request, require a Bearer Authentication or revision is incorrect</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "401",
-            "description": "<p>Require a Bearer Authentication.</p>"
+            "description": "<p>Require a Bearer Authentication</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "403",
-            "description": "<p>Forbidden - Token used in transaction is not valid. Check your token and/or permission.</p>"
+            "description": "<p>Forbidden Token used in transaction is not valid - check your token and/or permission</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "404",
-            "description": "<p>Not Found - We couldn't find the resource you are trying to access.</p>"
+            "description": "<p>Not Found We couldn't find the resource you are trying to access</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "405",
-            "description": "<p>Method Not Allowed - API endpoint does not accept the method used.</p>"
+            "description": "<p>Method Not Allowed ; API endpoint does not accept the method used</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "409",
-            "description": "<p>conflict.</p>"
+            "description": "<p>Conflict</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "429",
-            "description": "<p>Too Many Requests.</p>"
+            "description": "<p>Too Many Requests</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "500",
-            "description": "<p>Internal Error.</p>"
+            "description": "<p>Internal Server Error</p>"
           }
         ]
       },
@@ -5229,14 +5300,14 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "200",
-            "description": "<p>Success</p>"
+            "description": "<p>Server successfully understood the request</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "200 Response",
-          "content": "HTTP/1.1 200 Success\n{\n}",
+          "title": "200 Success",
+          "content": "HTTP/1.1 200 Response\n{\n}",
           "type": "json"
         }
       ]
@@ -5248,31 +5319,31 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "401",
-            "description": "<p>Require a Bearer Authentication.</p>"
+            "description": "<p>Require a Bearer Authentication</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "404",
-            "description": "<p>Not Found - We couldn't find the resource you are trying to access.</p>"
+            "description": "<p>Not Found We couldn't find the resource you are trying to access</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "405",
-            "description": "<p>Method Not Allowed - API endpoint does not accept the method used.</p>"
+            "description": "<p>Method Not Allowed ; API endpoint does not accept the method used</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "429",
-            "description": "<p>Too Many Requests.</p>"
+            "description": "<p>Too Many Requests</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "500",
-            "description": "<p>Internal Error.</p>"
+            "description": "<p>Internal Server Error</p>"
           }
         ]
       },
@@ -5369,14 +5440,14 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "200",
-            "description": "<p>Success</p>"
+            "description": "<p>Server successfully understood the request</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "200 Response",
-          "content": "HTTP/1.1 200 Success\n{\n}",
+          "title": "200 Success",
+          "content": "HTTP/1.1 200 Response\n{\n}",
           "type": "json"
         }
       ]
@@ -5388,31 +5459,31 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "401",
-            "description": "<p>Require a Bearer Authentication.</p>"
+            "description": "<p>Require a Bearer Authentication</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "404",
-            "description": "<p>Not Found - We couldn't find the resource you are trying to access.</p>"
+            "description": "<p>Not Found We couldn't find the resource you are trying to access</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "405",
-            "description": "<p>Method Not Allowed - API endpoint does not accept the method used.</p>"
+            "description": "<p>Method Not Allowed ; API endpoint does not accept the method used</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "429",
-            "description": "<p>Too Many Requests.</p>"
+            "description": "<p>Too Many Requests</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "500",
-            "description": "<p>Internal Error.</p>"
+            "description": "<p>Internal Server Error</p>"
           }
         ]
       },
@@ -5520,13 +5591,13 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "201",
-            "description": "<p>Created</p>"
+            "description": "<p>Creation of a new resource was successful</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "201 Response",
+          "title": "201 Created",
           "content": "HTTP/1.1 201 Created\n{\n  \"message\": \"Created\",\n  \"id\": \"\",\n  \"code\": 201\n}",
           "type": "json"
         }
@@ -5539,13 +5610,13 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "400",
-            "description": "<p>Bad Request, require a Bearer Authentication or revision is incorrect.</p>"
+            "description": "<p>Bad Request, require a Bearer Authentication or revision is incorrect</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "429",
-            "description": "<p>Too Many Requests.</p>"
+            "description": "<p>Too Many Requests</p>"
           }
         ]
       },
@@ -5578,7 +5649,7 @@ define({ "api": [
             "type": "uuid-v4",
             "optional": false,
             "field": "dashboard_id",
-            "description": "<p>Dashboard Id</p>"
+            "description": "<p>Dashboard Id to be deleted</p>"
           }
         ]
       }
@@ -5619,6 +5690,66 @@ define({ "api": [
           }
         ]
       }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "optional": false,
+            "field": "200",
+            "description": "<p>Server successfully understood the request</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "200 Success",
+          "content": "HTTP/1.1 200 Response\n{\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "401",
+            "description": "<p>Require a Bearer Authentication</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "403",
+            "description": "<p>Forbidden Token used in transaction is not valid - check your token and/or permission</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "404",
+            "description": "<p>Not Found We couldn't find the resource you are trying to access</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "401 Response",
+          "content": "HTTP/1.1 401 Not Authorized\n{\n  \"message\": \"Not Authorized\",\n  \"id\": \"\",\n  \"code\": 401\n}",
+          "type": "json"
+        },
+        {
+          "title": "403 Response",
+          "content": "HTTP/1.1 403 Forbidden\n{\n  \"message\": \"Forbidden\",\n  \"id\": \"\",\n  \"code\": 403\n}",
+          "type": "json"
+        },
+        {
+          "title": "404 Response",
+          "content": "HTTP/1.1 404 Not Found\n{\n  \"message\": \"Not Found\",\n  \"id\": \"\",\n  \"code\": 404\n}",
+          "type": "json"
+        }
+      ]
     }
   },
   {
@@ -5655,6 +5786,7 @@ define({ "api": [
         "type": "String",
         "optional": true,
         "field": "description",
+        "defaultValue": "the previous value before edition",
         "description": "<p>Dashboard Description</p>"
       },
       {
@@ -5662,14 +5794,8 @@ define({ "api": [
         "type": "String[]",
         "optional": true,
         "field": "snippets",
+        "defaultValue": "the previous value before edition",
         "description": "<p>List of Snippets Ids</p>"
-      },
-      {
-        "group": "meta",
-        "type": "Integer",
-        "optional": true,
-        "field": "meta.revision",
-        "description": "<p>If set to the current revision of the resource (before PUTing), the value is checked against the current revision in database.</p>"
       }
     ],
     "filename": "/home/mathieu/Projets/2019/internetcollaboratif.info/t6/routes/dashboards.js",
@@ -5716,14 +5842,14 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "200",
-            "description": "<p>Success</p>"
+            "description": "<p>Server successfully understood the request</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "200 Response",
-          "content": "HTTP/1.1 200 Success\n{\n}",
+          "title": "200 Success",
+          "content": "HTTP/1.1 200 Response\n{\n}",
           "type": "json"
         }
       ]
@@ -5735,49 +5861,49 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "400",
-            "description": "<p>Bad Request, require a Bearer Authentication or revision is incorrect.</p>"
+            "description": "<p>Bad Request, require a Bearer Authentication or revision is incorrect</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "401",
-            "description": "<p>Require a Bearer Authentication.</p>"
+            "description": "<p>Require a Bearer Authentication</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "403",
-            "description": "<p>Forbidden - Token used in transaction is not valid. Check your token and/or permission.</p>"
+            "description": "<p>Forbidden Token used in transaction is not valid - check your token and/or permission</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "404",
-            "description": "<p>Not Found - We couldn't find the resource you are trying to access.</p>"
+            "description": "<p>Not Found We couldn't find the resource you are trying to access</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "405",
-            "description": "<p>Method Not Allowed - API endpoint does not accept the method used.</p>"
+            "description": "<p>Method Not Allowed ; API endpoint does not accept the method used</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "409",
-            "description": "<p>conflict.</p>"
+            "description": "<p>Conflict</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "429",
-            "description": "<p>Too Many Requests.</p>"
+            "description": "<p>Too Many Requests</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "500",
-            "description": "<p>Internal Error.</p>"
+            "description": "<p>Internal Server Error</p>"
           }
         ]
       },
@@ -5896,14 +6022,14 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "200",
-            "description": "<p>Success</p>"
+            "description": "<p>Server successfully understood the request</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "200 Response",
-          "content": "HTTP/1.1 200 Success\n{\n}",
+          "title": "200 Success",
+          "content": "HTTP/1.1 200 Response\n{\n}",
           "type": "json"
         }
       ]
@@ -5915,31 +6041,31 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "401",
-            "description": "<p>Require a Bearer Authentication.</p>"
+            "description": "<p>Require a Bearer Authentication</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "404",
-            "description": "<p>Not Found - We couldn't find the resource you are trying to access.</p>"
+            "description": "<p>Not Found We couldn't find the resource you are trying to access</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "405",
-            "description": "<p>Method Not Allowed - API endpoint does not accept the method used.</p>"
+            "description": "<p>Method Not Allowed ; API endpoint does not accept the method used</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "429",
-            "description": "<p>Too Many Requests.</p>"
+            "description": "<p>Too Many Requests</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "500",
-            "description": "<p>Internal Error.</p>"
+            "description": "<p>Internal Server Error</p>"
           }
         ]
       },
@@ -6074,13 +6200,13 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "201",
-            "description": "<p>Created</p>"
+            "description": "<p>Creation of a new resource was successful</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "201 Response",
+          "title": "201 Created",
           "content": "HTTP/1.1 201 Created\n{\n  \"message\": \"Created\",\n  \"id\": \"\",\n  \"code\": 201\n}",
           "type": "json"
         }
@@ -6093,13 +6219,13 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "400",
-            "description": "<p>Bad Request, require a Bearer Authentication or revision is incorrect.</p>"
+            "description": "<p>Bad Request, require a Bearer Authentication or revision is incorrect</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "429",
-            "description": "<p>Too Many Requests.</p>"
+            "description": "<p>Too Many Requests</p>"
           }
         ]
       },
@@ -6132,7 +6258,7 @@ define({ "api": [
             "type": "uuid-v4",
             "optional": false,
             "field": "snippet_id",
-            "description": "<p>Snippet Id</p>"
+            "description": "<p>Snippet Id to be deleted</p>"
           }
         ]
       }
@@ -6173,6 +6299,55 @@ define({ "api": [
           }
         ]
       }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "optional": false,
+            "field": "200",
+            "description": "<p>Server successfully understood the request</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "200 Success",
+          "content": "HTTP/1.1 200 Response\n{\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "403",
+            "description": "<p>Forbidden Token used in transaction is not valid - check your token and/or permission</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "404",
+            "description": "<p>Not Found We couldn't find the resource you are trying to access</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "403 Response",
+          "content": "HTTP/1.1 403 Forbidden\n{\n  \"message\": \"Forbidden\",\n  \"id\": \"\",\n  \"code\": 403\n}",
+          "type": "json"
+        },
+        {
+          "title": "404 Response",
+          "content": "HTTP/1.1 404 Not Found\n{\n  \"message\": \"Not Found\",\n  \"id\": \"\",\n  \"code\": 404\n}",
+          "type": "json"
+        }
+      ]
     }
   },
   {
@@ -6271,14 +6446,14 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "200",
-            "description": "<p>Success</p>"
+            "description": "<p>Server successfully understood the request</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "200 Response",
-          "content": "HTTP/1.1 200 Success\n{\n}",
+          "title": "200 Success",
+          "content": "HTTP/1.1 200 Response\n{\n}",
           "type": "json"
         }
       ]
@@ -6290,49 +6465,49 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "400",
-            "description": "<p>Bad Request, require a Bearer Authentication or revision is incorrect.</p>"
+            "description": "<p>Bad Request, require a Bearer Authentication or revision is incorrect</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "401",
-            "description": "<p>Require a Bearer Authentication.</p>"
+            "description": "<p>Require a Bearer Authentication</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "403",
-            "description": "<p>Forbidden - Token used in transaction is not valid. Check your token and/or permission.</p>"
+            "description": "<p>Forbidden Token used in transaction is not valid - check your token and/or permission</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "404",
-            "description": "<p>Not Found - We couldn't find the resource you are trying to access.</p>"
+            "description": "<p>Not Found We couldn't find the resource you are trying to access</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "405",
-            "description": "<p>Method Not Allowed - API endpoint does not accept the method used.</p>"
+            "description": "<p>Method Not Allowed ; API endpoint does not accept the method used</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "409",
-            "description": "<p>conflict.</p>"
+            "description": "<p>Conflict</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "429",
-            "description": "<p>Too Many Requests.</p>"
+            "description": "<p>Too Many Requests</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "500",
-            "description": "<p>Internal Error.</p>"
+            "description": "<p>Internal Server Error</p>"
           }
         ]
       },
@@ -6451,14 +6626,14 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "200",
-            "description": "<p>Success</p>"
+            "description": "<p>Server successfully understood the request</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "200 Response",
-          "content": "HTTP/1.1 200 Success\n{\n}",
+          "title": "200 Success",
+          "content": "HTTP/1.1 200 Response\n{\n}",
           "type": "json"
         }
       ]
@@ -6470,25 +6645,25 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "401",
-            "description": "<p>Require a Bearer Authentication.</p>"
+            "description": "<p>Require a Bearer Authentication</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "405",
-            "description": "<p>Method Not Allowed - API endpoint does not accept the method used.</p>"
+            "description": "<p>Method Not Allowed ; API endpoint does not accept the method used</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "429",
-            "description": "<p>Too Many Requests.</p>"
+            "description": "<p>Too Many Requests</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "500",
-            "description": "<p>Internal Error.</p>"
+            "description": "<p>Internal Server Error</p>"
           }
         ]
       },
@@ -6591,13 +6766,13 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "201",
-            "description": "<p>Created</p>"
+            "description": "<p>Creation of a new resource was successful</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "201 Response",
+          "title": "201 Created",
           "content": "HTTP/1.1 201 Created\n{\n  \"message\": \"Created\",\n  \"id\": \"\",\n  \"code\": 201\n}",
           "type": "json"
         }
@@ -6610,13 +6785,13 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "400",
-            "description": "<p>Bad Request, require a Bearer Authentication or revision is incorrect.</p>"
+            "description": "<p>Bad Request, require a Bearer Authentication or revision is incorrect</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "429",
-            "description": "<p>Too Many Requests.</p>"
+            "description": "<p>Too Many Requests</p>"
           }
         ]
       },
@@ -6649,7 +6824,7 @@ define({ "api": [
             "type": "uuid-v4",
             "optional": true,
             "field": "rule_id",
-            "description": "<p>Rule Id</p>"
+            "description": "<p>Rule Id to be deleted</p>"
           }
         ]
       }
@@ -6690,6 +6865,55 @@ define({ "api": [
           }
         ]
       }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "optional": false,
+            "field": "200",
+            "description": "<p>Server successfully understood the request</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "200 Success",
+          "content": "HTTP/1.1 200 Response\n{\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "403",
+            "description": "<p>Forbidden Token used in transaction is not valid - check your token and/or permission</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "404",
+            "description": "<p>Not Found We couldn't find the resource you are trying to access</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "403 Response",
+          "content": "HTTP/1.1 403 Forbidden\n{\n  \"message\": \"Forbidden\",\n  \"id\": \"\",\n  \"code\": 403\n}",
+          "type": "json"
+        },
+        {
+          "title": "404 Response",
+          "content": "HTTP/1.1 404 Not Found\n{\n  \"message\": \"Not Found\",\n  \"id\": \"\",\n  \"code\": 404\n}",
+          "type": "json"
+        }
+      ]
     }
   },
   {
@@ -6787,14 +7011,14 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "200",
-            "description": "<p>Success</p>"
+            "description": "<p>Server successfully understood the request</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "200 Response",
-          "content": "HTTP/1.1 200 Success\n{\n}",
+          "title": "200 Success",
+          "content": "HTTP/1.1 200 Response\n{\n}",
           "type": "json"
         }
       ]
@@ -6806,49 +7030,49 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "400",
-            "description": "<p>Bad Request, require a Bearer Authentication or revision is incorrect.</p>"
+            "description": "<p>Bad Request, require a Bearer Authentication or revision is incorrect</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "401",
-            "description": "<p>Require a Bearer Authentication.</p>"
+            "description": "<p>Require a Bearer Authentication</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "403",
-            "description": "<p>Forbidden - Token used in transaction is not valid. Check your token and/or permission.</p>"
+            "description": "<p>Forbidden Token used in transaction is not valid - check your token and/or permission</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "404",
-            "description": "<p>Not Found - We couldn't find the resource you are trying to access.</p>"
+            "description": "<p>Not Found We couldn't find the resource you are trying to access</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "405",
-            "description": "<p>Method Not Allowed - API endpoint does not accept the method used.</p>"
+            "description": "<p>Method Not Allowed ; API endpoint does not accept the method used</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "409",
-            "description": "<p>conflict.</p>"
+            "description": "<p>Conflict</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "429",
-            "description": "<p>Too Many Requests.</p>"
+            "description": "<p>Too Many Requests</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "500",
-            "description": "<p>Internal Error.</p>"
+            "description": "<p>Internal Server Error</p>"
           }
         ]
       },
@@ -6974,14 +7198,14 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "200",
-            "description": "<p>Success</p>"
+            "description": "<p>Server successfully understood the request</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "200 Response",
-          "content": "HTTP/1.1 200 Success\n{\n}",
+          "title": "200 Success",
+          "content": "HTTP/1.1 200 Response\n{\n}",
           "type": "json"
         }
       ]
@@ -6993,25 +7217,25 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "401",
-            "description": "<p>Require a Bearer Authentication.</p>"
+            "description": "<p>Require a Bearer Authentication</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "405",
-            "description": "<p>Method Not Allowed - API endpoint does not accept the method used.</p>"
+            "description": "<p>Method Not Allowed ; API endpoint does not accept the method used</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "429",
-            "description": "<p>Too Many Requests.</p>"
+            "description": "<p>Too Many Requests</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "500",
-            "description": "<p>Internal Error.</p>"
+            "description": "<p>Internal Server Error</p>"
           }
         ]
       },
@@ -7111,13 +7335,13 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "201",
-            "description": "<p>Created</p>"
+            "description": "<p>Creation of a new resource was successful</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "201 Response",
+          "title": "201 Created",
           "content": "HTTP/1.1 201 Created\n{\n  \"message\": \"Created\",\n  \"id\": \"\",\n  \"code\": 201\n}",
           "type": "json"
         }
@@ -7130,19 +7354,19 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "404",
-            "description": "<p>Not Found - We couldn't find the resource you are trying to access.</p>"
+            "description": "<p>Not Found We couldn't find the resource you are trying to access</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "429",
-            "description": "<p>Too Many Requests.</p>"
+            "description": "<p>Too Many Requests</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "500",
-            "description": "<p>Internal Error.</p>"
+            "description": "<p>Internal Server Error</p>"
           }
         ]
       },
@@ -7229,13 +7453,13 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "201",
-            "description": "<p>Created</p>"
+            "description": "<p>Creation of a new resource was successful</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "201 Response",
+          "title": "201 Created",
           "content": "HTTP/1.1 201 Created\n{\n  \"message\": \"Created\",\n  \"id\": \"\",\n  \"code\": 201\n}",
           "type": "json"
         }
@@ -7248,19 +7472,19 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "404",
-            "description": "<p>Not Found - We couldn't find the resource you are trying to access.</p>"
+            "description": "<p>Not Found We couldn't find the resource you are trying to access</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "429",
-            "description": "<p>Too Many Requests.</p>"
+            "description": "<p>Too Many Requests</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "500",
-            "description": "<p>Internal Error.</p>"
+            "description": "<p>Internal Server Error</p>"
           }
         ]
       },
@@ -7334,13 +7558,13 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "201",
-            "description": "<p>Created</p>"
+            "description": "<p>Creation of a new resource was successful</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "201 Response",
+          "title": "201 Created",
           "content": "HTTP/1.1 201 Created\n{\n  \"message\": \"Created\",\n  \"id\": \"\",\n  \"code\": 201\n}",
           "type": "json"
         }
@@ -7353,13 +7577,13 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "429",
-            "description": "<p>Too Many Requests.</p>"
+            "description": "<p>Too Many Requests</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "500",
-            "description": "<p>Internal Error.</p>"
+            "description": "<p>Internal Server Error</p>"
           }
         ]
       },
@@ -7428,13 +7652,13 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "201",
-            "description": "<p>Created</p>"
+            "description": "<p>Creation of a new resource was successful</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "201 Response",
+          "title": "201 Created",
           "content": "HTTP/1.1 201 Created\n{\n  \"message\": \"Created\",\n  \"id\": \"\",\n  \"code\": 201\n}",
           "type": "json"
         }
@@ -7447,13 +7671,13 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "429",
-            "description": "<p>Too Many Requests.</p>"
+            "description": "<p>Too Many Requests</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "500",
-            "description": "<p>Internal Error.</p>"
+            "description": "<p>Internal Server Error</p>"
           }
         ]
       },
@@ -7522,13 +7746,13 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "201",
-            "description": "<p>Created</p>"
+            "description": "<p>Creation of a new resource was successful</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "201 Response",
+          "title": "201 Created",
           "content": "HTTP/1.1 201 Created\n{\n  \"message\": \"Created\",\n  \"id\": \"\",\n  \"code\": 201\n}",
           "type": "json"
         }
@@ -7541,13 +7765,13 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "429",
-            "description": "<p>Too Many Requests.</p>"
+            "description": "<p>Too Many Requests</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "500",
-            "description": "<p>Internal Error.</p>"
+            "description": "<p>Internal Server Error</p>"
           }
         ]
       },
@@ -7653,14 +7877,14 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "200",
-            "description": "<p>Success</p>"
+            "description": "<p>Server successfully understood the request</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "200 Response",
-          "content": "HTTP/1.1 200 Success\n{\n}",
+          "title": "200 Success",
+          "content": "HTTP/1.1 200 Response\n{\n}",
           "type": "json"
         }
       ]
@@ -7672,31 +7896,31 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "401",
-            "description": "<p>Require a Bearer Authentication.</p>"
+            "description": "<p>Require a Bearer Authentication</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "404",
-            "description": "<p>Not Found - We couldn't find the resource you are trying to access.</p>"
+            "description": "<p>Not Found We couldn't find the resource you are trying to access</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "405",
-            "description": "<p>Method Not Allowed - API endpoint does not accept the method used.</p>"
+            "description": "<p>Method Not Allowed ; API endpoint does not accept the method used</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "429",
-            "description": "<p>Too Many Requests.</p>"
+            "description": "<p>Too Many Requests</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "500",
-            "description": "<p>Internal Error.</p>"
+            "description": "<p>Internal Server Error</p>"
           }
         ]
       },
@@ -7820,7 +8044,7 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "401",
-            "description": "<p>Require a Bearer Authentication.</p>"
+            "description": "<p>Require a Bearer Authentication</p>"
           }
         ]
       },
@@ -7958,13 +8182,13 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "201",
-            "description": "<p>Created</p>"
+            "description": "<p>Creation of a new resource was successful</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "201 Response",
+          "title": "201 Created",
           "content": "HTTP/1.1 201 Created\n{\n  \"message\": \"Created\",\n  \"id\": \"\",\n  \"code\": 201\n}",
           "type": "json"
         }
@@ -7977,7 +8201,7 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "401",
-            "description": "<p>Require a Bearer Authentication.</p>"
+            "description": "<p>Require a Bearer Authentication</p>"
           }
         ]
       },
@@ -8010,7 +8234,7 @@ define({ "api": [
             "type": "uuid-v4",
             "optional": false,
             "field": "datatype_id",
-            "description": "<p>DataType Id</p>"
+            "description": "<p>DataType Id to be deleted</p>"
           }
         ]
       }
@@ -8052,6 +8276,25 @@ define({ "api": [
         ]
       }
     },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "optional": false,
+            "field": "200",
+            "description": "<p>Server successfully understood the request</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "200 Success",
+          "content": "HTTP/1.1 200 Response\n{\n}",
+          "type": "json"
+        }
+      ]
+    },
     "error": {
       "fields": {
         "Error 4xx": [
@@ -8059,13 +8302,19 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "401",
-            "description": "<p>Require a Bearer Authentication.</p>"
+            "description": "<p>Require a Bearer Authentication</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "403",
+            "description": "<p>Forbidden Token used in transaction is not valid - check your token and/or permission</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "404",
-            "description": "<p>Not Found - We couldn't find the resource you are trying to access.</p>"
+            "description": "<p>Not Found We couldn't find the resource you are trying to access</p>"
           }
         ]
       },
@@ -8073,6 +8322,11 @@ define({ "api": [
         {
           "title": "401 Response",
           "content": "HTTP/1.1 401 Not Authorized\n{\n  \"message\": \"Not Authorized\",\n  \"id\": \"\",\n  \"code\": 401\n}",
+          "type": "json"
+        },
+        {
+          "title": "403 Response",
+          "content": "HTTP/1.1 403 Forbidden\n{\n  \"message\": \"Forbidden\",\n  \"id\": \"\",\n  \"code\": 403\n}",
           "type": "json"
         },
         {
@@ -8103,7 +8357,7 @@ define({ "api": [
             "type": "uuid-v4",
             "optional": false,
             "field": "unit_id",
-            "description": "<p>Unit ID</p>"
+            "description": "<p>Unit Id to be deleted</p>"
           }
         ]
       }
@@ -8152,14 +8406,14 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "200",
-            "description": "<p>Success</p>"
+            "description": "<p>Server successfully understood the request</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "200 Response",
-          "content": "HTTP/1.1 200 Success\n{\n}",
+          "title": "200 Success",
+          "content": "HTTP/1.1 200 Response\n{\n}",
           "type": "json"
         }
       ]
@@ -8171,13 +8425,19 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "401",
-            "description": "<p>Require a Bearer Authentication.</p>"
+            "description": "<p>Require a Bearer Authentication</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "403",
+            "description": "<p>Forbidden Token used in transaction is not valid - check your token and/or permission</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "404",
-            "description": "<p>Not Found - We couldn't find the resource you are trying to access.</p>"
+            "description": "<p>Not Found We couldn't find the resource you are trying to access</p>"
           }
         ]
       },
@@ -8185,6 +8445,11 @@ define({ "api": [
         {
           "title": "401 Response",
           "content": "HTTP/1.1 401 Not Authorized\n{\n  \"message\": \"Not Authorized\",\n  \"id\": \"\",\n  \"code\": 401\n}",
+          "type": "json"
+        },
+        {
+          "title": "403 Response",
+          "content": "HTTP/1.1 403 Forbidden\n{\n  \"message\": \"Forbidden\",\n  \"id\": \"\",\n  \"code\": 403\n}",
           "type": "json"
         },
         {
@@ -8251,13 +8516,13 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "201",
-            "description": "<p>Created</p>"
+            "description": "<p>Creation of a new resource was successful</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "201 Response",
+          "title": "201 Created",
           "content": "HTTP/1.1 201 Created\n{\n  \"message\": \"Created\",\n  \"id\": \"\",\n  \"code\": 201\n}",
           "type": "json"
         }
@@ -8270,7 +8535,7 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "403",
-            "description": "<p>Forbidden - Token used in transaction is not valid. Check your token and/or permission.</p>"
+            "description": "<p>Forbidden Token used in transaction is not valid - check your token and/or permission</p>"
           }
         ]
       },
@@ -8386,7 +8651,7 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "401",
-            "description": "<p>Require a Bearer Authentication.</p>"
+            "description": "<p>Require a Bearer Authentication</p>"
           }
         ]
       },
@@ -8536,14 +8801,14 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "200",
-            "description": "<p>Success</p>"
+            "description": "<p>Server successfully understood the request</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "200 Response",
-          "content": "HTTP/1.1 200 Success\n{\n}",
+          "title": "200 Success",
+          "content": "HTTP/1.1 200 Response\n{\n}",
           "type": "json"
         }
       ]
@@ -8555,7 +8820,7 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "401",
-            "description": "<p>Require a Bearer Authentication.</p>"
+            "description": "<p>Require a Bearer Authentication</p>"
           }
         ]
       },
@@ -8645,14 +8910,14 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "200",
-            "description": "<p>Success</p>"
+            "description": "<p>Server successfully understood the request</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "200 Response",
-          "content": "HTTP/1.1 200 Success\n{\n}",
+          "title": "200 Success",
+          "content": "HTTP/1.1 200 Response\n{\n}",
           "type": "json"
         }
       ]
@@ -8664,7 +8929,7 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "401",
-            "description": "<p>Require a Bearer Authentication.</p>"
+            "description": "<p>Require a Bearer Authentication</p>"
           }
         ]
       },
@@ -8755,13 +9020,13 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "201",
-            "description": "<p>Created</p>"
+            "description": "<p>Creation of a new resource was successful</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "201 Response",
+          "title": "201 Created",
           "content": "HTTP/1.1 201 Created\n{\n  \"message\": \"Created\",\n  \"id\": \"\",\n  \"code\": 201\n}",
           "type": "json"
         }
@@ -8774,7 +9039,7 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "403",
-            "description": "<p>Forbidden - Token used in transaction is not valid. Check your token and/or permission.</p>"
+            "description": "<p>Forbidden Token used in transaction is not valid - check your token and/or permission</p>"
           }
         ]
       },
@@ -8843,13 +9108,13 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "202",
-            "description": "<p>Accepted</p>"
+            "description": "<p>Server successfully understood the request, it will be done asynchroneously</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "202 Response",
+          "title": "202 Accepted",
           "content": "HTTP/1.1 202 Accepted\n{\n}",
           "type": "json"
         }
@@ -8862,13 +9127,13 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "403",
-            "description": "<p>Forbidden - Token used in transaction is not valid. Check your token and/or permission.</p>"
+            "description": "<p>Forbidden Token used in transaction is not valid - check your token and/or permission</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "404",
-            "description": "<p>Not Found - We couldn't find the resource you are trying to access.</p>"
+            "description": "<p>Not Found We couldn't find the resource you are trying to access</p>"
           }
         ]
       },
@@ -8942,13 +9207,13 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "202",
-            "description": "<p>Accepted</p>"
+            "description": "<p>Server successfully understood the request, it will be done asynchroneously</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "202 Response",
+          "title": "202 Accepted",
           "content": "HTTP/1.1 202 Accepted\n{\n}",
           "type": "json"
         }
@@ -8961,13 +9226,13 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "403",
-            "description": "<p>Forbidden - Token used in transaction is not valid. Check your token and/or permission.</p>"
+            "description": "<p>Forbidden Token used in transaction is not valid - check your token and/or permission</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "404",
-            "description": "<p>Not Found - We couldn't find the resource you are trying to access.</p>"
+            "description": "<p>Not Found We couldn't find the resource you are trying to access</p>"
           }
         ]
       },
@@ -9041,13 +9306,13 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "202",
-            "description": "<p>Accepted</p>"
+            "description": "<p>Server successfully understood the request, it will be done asynchroneously</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "202 Response",
+          "title": "202 Accepted",
           "content": "HTTP/1.1 202 Accepted\n{\n}",
           "type": "json"
         }
@@ -9060,13 +9325,13 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "403",
-            "description": "<p>Forbidden - Token used in transaction is not valid. Check your token and/or permission.</p>"
+            "description": "<p>Forbidden Token used in transaction is not valid - check your token and/or permission</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "404",
-            "description": "<p>Not Found - We couldn't find the resource you are trying to access.</p>"
+            "description": "<p>Not Found We couldn't find the resource you are trying to access</p>"
           }
         ]
       },
@@ -9105,14 +9370,14 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "200",
-            "description": "<p>Success</p>"
+            "description": "<p>Server successfully understood the request</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "200 Response",
-          "content": "HTTP/1.1 200 Success\n{\n}",
+          "title": "200 Success",
+          "content": "HTTP/1.1 200 Response\n{\n}",
           "type": "json"
         }
       ]
@@ -9124,7 +9389,7 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "403",
-            "description": "<p>Forbidden - Token used in transaction is not valid. Check your token and/or permission.</p>"
+            "description": "<p>Forbidden Token used in transaction is not valid - check your token and/or permission</p>"
           }
         ]
       },
@@ -9192,14 +9457,14 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "200",
-            "description": "<p>Success</p>"
+            "description": "<p>Server successfully understood the request</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "200 Response",
-          "content": "HTTP/1.1 200 Success\n{\n}",
+          "title": "200 Success",
+          "content": "HTTP/1.1 200 Response\n{\n}",
           "type": "json"
         }
       ]
@@ -9211,7 +9476,7 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "403",
-            "description": "<p>Forbidden - Token used in transaction is not valid. Check your token and/or permission.</p>"
+            "description": "<p>Forbidden Token used in transaction is not valid - check your token and/or permission</p>"
           }
         ]
       },
@@ -9280,13 +9545,13 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "202",
-            "description": "<p>Accepted</p>"
+            "description": "<p>Server successfully understood the request, it will be done asynchroneously</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "202 Response",
+          "title": "202 Accepted",
           "content": "HTTP/1.1 202 Accepted\n{\n}",
           "type": "json"
         }
@@ -9299,13 +9564,13 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "403",
-            "description": "<p>Forbidden - Token used in transaction is not valid. Check your token and/or permission.</p>"
+            "description": "<p>Forbidden Token used in transaction is not valid - check your token and/or permission</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "404",
-            "description": "<p>Not Found - We couldn't find the resource you are trying to access.</p>"
+            "description": "<p>Not Found We couldn't find the resource you are trying to access</p>"
           }
         ]
       },
@@ -9417,13 +9682,13 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "202",
-            "description": "<p>Accepted</p>"
+            "description": "<p>Server successfully understood the request, it will be done asynchroneously</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "202 Response",
+          "title": "202 Accepted",
           "content": "HTTP/1.1 202 Accepted\n{\n}",
           "type": "json"
         }
@@ -9436,13 +9701,13 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "403",
-            "description": "<p>Forbidden - Token used in transaction is not valid. Check your token and/or permission.</p>"
+            "description": "<p>Forbidden Token used in transaction is not valid - check your token and/or permission</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "404",
-            "description": "<p>Not Found - We couldn't find the resource you are trying to access.</p>"
+            "description": "<p>Not Found We couldn't find the resource you are trying to access</p>"
           }
         ]
       },
@@ -9516,13 +9781,13 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "202",
-            "description": "<p>Accepted</p>"
+            "description": "<p>Server successfully understood the request, it will be done asynchroneously</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "202 Response",
+          "title": "202 Accepted",
           "content": "HTTP/1.1 202 Accepted\n{\n}",
           "type": "json"
         }
@@ -9535,13 +9800,13 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "403",
-            "description": "<p>Forbidden - Token used in transaction is not valid. Check your token and/or permission.</p>"
+            "description": "<p>Forbidden Token used in transaction is not valid - check your token and/or permission</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "404",
-            "description": "<p>Not Found - We couldn't find the resource you are trying to access.</p>"
+            "description": "<p>Not Found We couldn't find the resource you are trying to access</p>"
           }
         ]
       },
@@ -9615,13 +9880,13 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "202",
-            "description": "<p>Accepted</p>"
+            "description": "<p>Server successfully understood the request, it will be done asynchroneously</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "202 Response",
+          "title": "202 Accepted",
           "content": "HTTP/1.1 202 Accepted\n{\n}",
           "type": "json"
         }
@@ -9634,13 +9899,13 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "403",
-            "description": "<p>Forbidden - Token used in transaction is not valid. Check your token and/or permission.</p>"
+            "description": "<p>Forbidden Token used in transaction is not valid - check your token and/or permission</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "404",
-            "description": "<p>Not Found - We couldn't find the resource you are trying to access.</p>"
+            "description": "<p>Not Found We couldn't find the resource you are trying to access</p>"
           }
         ]
       },
@@ -9744,13 +10009,13 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "202",
-            "description": "<p>Accepted</p>"
+            "description": "<p>Server successfully understood the request, it will be done asynchroneously</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "202 Response",
+          "title": "202 Accepted",
           "content": "HTTP/1.1 202 Accepted\n{\n}",
           "type": "json"
         }
@@ -9763,13 +10028,13 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "403",
-            "description": "<p>Forbidden - Token used in transaction is not valid. Check your token and/or permission.</p>"
+            "description": "<p>Forbidden Token used in transaction is not valid - check your token and/or permission</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "404",
-            "description": "<p>Not Found - We couldn't find the resource you are trying to access.</p>"
+            "description": "<p>Not Found We couldn't find the resource you are trying to access</p>"
           }
         ]
       },
@@ -9843,13 +10108,13 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "202",
-            "description": "<p>Accepted</p>"
+            "description": "<p>Server successfully understood the request, it will be done asynchroneously</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "202 Response",
+          "title": "202 Accepted",
           "content": "HTTP/1.1 202 Accepted\n{\n}",
           "type": "json"
         }
@@ -9862,13 +10127,13 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "403",
-            "description": "<p>Forbidden - Token used in transaction is not valid. Check your token and/or permission.</p>"
+            "description": "<p>Forbidden Token used in transaction is not valid - check your token and/or permission</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "404",
-            "description": "<p>Not Found - We couldn't find the resource you are trying to access.</p>"
+            "description": "<p>Not Found We couldn't find the resource you are trying to access</p>"
           }
         ]
       },
@@ -9942,13 +10207,13 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "202",
-            "description": "<p>Accepted</p>"
+            "description": "<p>Server successfully understood the request, it will be done asynchroneously</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "202 Response",
+          "title": "202 Accepted",
           "content": "HTTP/1.1 202 Accepted\n{\n}",
           "type": "json"
         }
@@ -9961,13 +10226,13 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "403",
-            "description": "<p>Forbidden - Token used in transaction is not valid. Check your token and/or permission.</p>"
+            "description": "<p>Forbidden Token used in transaction is not valid - check your token and/or permission</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "404",
-            "description": "<p>Not Found - We couldn't find the resource you are trying to access.</p>"
+            "description": "<p>Not Found We couldn't find the resource you are trying to access</p>"
           }
         ]
       },
@@ -10006,14 +10271,14 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "200",
-            "description": "<p>Success</p>"
+            "description": "<p>Server successfully understood the request</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "200 Response",
-          "content": "HTTP/1.1 200 Success\n{\n}",
+          "title": "200 Success",
+          "content": "HTTP/1.1 200 Response\n{\n}",
           "type": "json"
         }
       ]
@@ -10054,25 +10319,25 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "401",
-            "description": "<p>Require a Bearer Authentication.</p>"
+            "description": "<p>Require a Bearer Authentication</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "404",
-            "description": "<p>Not Found - We couldn't find the resource you are trying to access.</p>"
+            "description": "<p>Not Found We couldn't find the resource you are trying to access</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "405",
-            "description": "<p>Method Not Allowed - API endpoint does not accept the method used.</p>"
+            "description": "<p>Method Not Allowed ; API endpoint does not accept the method used</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "500",
-            "description": "<p>Internal Error.</p>"
+            "description": "<p>Internal Server Error</p>"
           }
         ]
       },
@@ -10121,14 +10386,14 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "200",
-            "description": "<p>Success</p>"
+            "description": "<p>Server successfully understood the request</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "200 Response",
-          "content": "HTTP/1.1 200 Success\n{\n}",
+          "title": "200 Success",
+          "content": "HTTP/1.1 200 Response\n{\n}",
           "type": "json"
         }
       ]
@@ -10155,14 +10420,14 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "200",
-            "description": "<p>Success</p>"
+            "description": "<p>Server successfully understood the request</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "200 Response",
-          "content": "HTTP/1.1 200 Success\n{\n}",
+          "title": "200 Success",
+          "content": "HTTP/1.1 200 Response\n{\n}",
           "type": "json"
         }
       ]
@@ -10240,14 +10505,14 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "200",
-            "description": "<p>Success</p>"
+            "description": "<p>Server successfully understood the request</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "200 Response",
-          "content": "HTTP/1.1 200 Success\n{\n}",
+          "title": "200 Success",
+          "content": "HTTP/1.1 200 Response\n{\n}",
           "type": "json"
         }
       ]
@@ -10259,7 +10524,7 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "404",
-            "description": "<p>Not Found - We couldn't find the resource you are trying to access.</p>"
+            "description": "<p>Not Found We couldn't find the resource you are trying to access</p>"
           }
         ]
       },
@@ -10293,14 +10558,14 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "200",
-            "description": "<p>Success</p>"
+            "description": "<p>Server successfully understood the request</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "200 Response",
-          "content": "HTTP/1.1 200 Success\n{\n}",
+          "title": "200 Success",
+          "content": "HTTP/1.1 200 Response\n{\n}",
           "type": "json"
         }
       ]
@@ -10327,14 +10592,14 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "200",
-            "description": "<p>Success</p>"
+            "description": "<p>Server successfully understood the request</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "200 Response",
-          "content": "HTTP/1.1 200 Success\n{\n}",
+          "title": "200 Success",
+          "content": "HTTP/1.1 200 Response\n{\n}",
           "type": "json"
         }
       ]
@@ -10360,21 +10625,21 @@ define({ "api": [
         "optional": false,
         "field": "grant_type",
         "defaultValue": "password",
-        "description": "<p>Grant type is either &quot;password&quot; (default) to authenticate using your own credentials, or &quot;refresh_token&quot; to refresh a token before it expires.</p>"
+        "description": "<p>Grant type is the method to authenticate using your own credentials, using a pair of Key/Secret or refreshing a Bearer token before it expires.</p>"
       },
       {
         "group": "Body",
         "type": "String",
         "optional": true,
         "field": "username",
-        "description": "<p>Your own username</p>"
+        "description": "<p>Your own username, required only when grant_type=&quot;password&quot;</p>"
       },
       {
         "group": "Body",
         "type": "String",
         "optional": true,
         "field": "password",
-        "description": "<p>Your own password</p>"
+        "description": "<p>Your own password, required only when grant_type=&quot;password&quot;</p>"
       },
       {
         "group": "Body",
@@ -10382,7 +10647,7 @@ define({ "api": [
         "optional": true,
         "field": "key",
         "defaultValue": "undefined",
-        "description": "<p>In &quot;access_token&quot; context, Client Api Key</p>"
+        "description": "<p>Client Api Key, required only when grant_type=&quot;access_token&quot;</p>"
       },
       {
         "group": "Body",
@@ -10390,7 +10655,7 @@ define({ "api": [
         "optional": true,
         "field": "secret",
         "defaultValue": "undefined",
-        "description": "<p>In &quot;access_token&quot; context, Client Api Secret</p>"
+        "description": "<p>Client Api Secret, required only when grant_type=&quot;access_token&quot;</p>"
       },
       {
         "group": "Body",
@@ -10443,14 +10708,14 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "200",
-            "description": "<p>Success</p>"
+            "description": "<p>Server successfully understood the request</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "200 Response",
-          "content": "HTTP/1.1 200 Success\n{\n}",
+          "title": "200 Success",
+          "content": "HTTP/1.1 200 Response\n{\n}",
           "type": "json"
         }
       ]
@@ -10469,25 +10734,25 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "400",
-            "description": "<p>Bad Request, require a Bearer Authentication or revision is incorrect.</p>"
+            "description": "<p>Bad Request, require a Bearer Authentication or revision is incorrect</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "401",
-            "description": "<p>Require a Bearer Authentication.</p>"
+            "description": "<p>Require a Bearer Authentication</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "403",
-            "description": "<p>Forbidden - Token used in transaction is not valid. Check your token and/or permission.</p>"
+            "description": "<p>Forbidden Token used in transaction is not valid - check your token and/or permission</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "500",
-            "description": "<p>Internal Error.</p>"
+            "description": "<p>Internal Server Error</p>"
           }
         ]
       },
@@ -10526,14 +10791,14 @@ define({ "api": [
       {
         "group": "Body",
         "type": "String",
-        "optional": false,
+        "optional": true,
         "field": "firstName",
         "description": "<p>The User First Name</p>"
       },
       {
         "group": "Body",
         "type": "String",
-        "optional": false,
+        "optional": true,
         "field": "lastName",
         "description": "<p>The User Last Name</p>"
       },
@@ -10559,13 +10824,13 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "201",
-            "description": "<p>Created</p>"
+            "description": "<p>Creation of a new resource was successful</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "201 Response",
+          "title": "201 Created",
           "content": "HTTP/1.1 201 Created\n{\n  \"message\": \"Created\",\n  \"id\": \"\",\n  \"code\": 201\n}",
           "type": "json"
         }
@@ -10578,13 +10843,13 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "412",
-            "description": "<p>Precondition Failed.</p>"
+            "description": "<p>Precondition Failed</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "429",
-            "description": "<p>Too Many Requests.</p>"
+            "description": "<p>Too Many Requests</p>"
           }
         ]
       },
@@ -10666,14 +10931,14 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "200",
-            "description": "<p>Success</p>"
+            "description": "<p>Server successfully understood the request</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "200 Response",
-          "content": "HTTP/1.1 200 Success\n{\n}",
+          "title": "200 Success",
+          "content": "HTTP/1.1 200 Response\n{\n}",
           "type": "json"
         }
       ]
@@ -10685,19 +10950,19 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "403",
-            "description": "<p>Forbidden - Token used in transaction is not valid. Check your token and/or permission.</p>"
+            "description": "<p>Forbidden Token used in transaction is not valid - check your token and/or permission</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "404",
-            "description": "<p>Not Found - We couldn't find the resource you are trying to access.</p>"
+            "description": "<p>Not Found We couldn't find the resource you are trying to access</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "429",
-            "description": "<p>Too Many Requests.</p>"
+            "description": "<p>Too Many Requests</p>"
           }
         ]
       },
@@ -10807,14 +11072,14 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "200",
-            "description": "<p>Success</p>"
+            "description": "<p>Server successfully understood the request</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "200 Response",
-          "content": "HTTP/1.1 200 Success\n{\n}",
+          "title": "200 Success",
+          "content": "HTTP/1.1 200 Response\n{\n}",
           "type": "json"
         }
       ]
@@ -10826,19 +11091,19 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "403",
-            "description": "<p>Forbidden - Token used in transaction is not valid. Check your token and/or permission.</p>"
+            "description": "<p>Forbidden Token used in transaction is not valid - check your token and/or permission</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "412",
-            "description": "<p>Precondition Failed.</p>"
+            "description": "<p>Precondition Failed</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "429",
-            "description": "<p>Too Many Requests.</p>"
+            "description": "<p>Too Many Requests</p>"
           }
         ]
       },
@@ -10922,13 +11187,13 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "201",
-            "description": "<p>Created</p>"
+            "description": "<p>Creation of a new resource was successful</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "201 Response",
+          "title": "201 Created",
           "content": "HTTP/1.1 201 Created\n{\n  \"message\": \"Created\",\n  \"id\": \"\",\n  \"code\": 201\n}",
           "type": "json"
         }
@@ -10941,19 +11206,19 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "403",
-            "description": "<p>Forbidden - Token used in transaction is not valid. Check your token and/or permission.</p>"
+            "description": "<p>Forbidden Token used in transaction is not valid - check your token and/or permission</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "412",
-            "description": "<p>Precondition Failed.</p>"
+            "description": "<p>Precondition Failed</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "429",
-            "description": "<p>Too Many Requests.</p>"
+            "description": "<p>Too Many Requests</p>"
           }
         ]
       },
@@ -11040,14 +11305,14 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "200",
-            "description": "<p>Success</p>"
+            "description": "<p>Server successfully understood the request</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "200 Response",
-          "content": "HTTP/1.1 200 Success\n{\n}",
+          "title": "200 Success",
+          "content": "HTTP/1.1 200 Response\n{\n}",
           "type": "json"
         }
       ]
@@ -11059,31 +11324,31 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "401",
-            "description": "<p>Require a Bearer Authentication.</p>"
+            "description": "<p>Require a Bearer Authentication</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "404",
-            "description": "<p>Not Found - We couldn't find the resource you are trying to access.</p>"
+            "description": "<p>Not Found We couldn't find the resource you are trying to access</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "405",
-            "description": "<p>Method Not Allowed - API endpoint does not accept the method used.</p>"
+            "description": "<p>Method Not Allowed ; API endpoint does not accept the method used</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "429",
-            "description": "<p>Too Many Requests.</p>"
+            "description": "<p>Too Many Requests</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "500",
-            "description": "<p>Internal Error.</p>"
+            "description": "<p>Internal Server Error</p>"
           }
         ]
       },
@@ -11180,14 +11445,14 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "200",
-            "description": "<p>Success</p>"
+            "description": "<p>Server successfully understood the request</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "200 Response",
-          "content": "HTTP/1.1 200 Success\n{\n}",
+          "title": "200 Success",
+          "content": "HTTP/1.1 200 Response\n{\n}",
           "type": "json"
         }
       ]
@@ -11199,31 +11464,31 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "401",
-            "description": "<p>Require a Bearer Authentication.</p>"
+            "description": "<p>Require a Bearer Authentication</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "404",
-            "description": "<p>Not Found - We couldn't find the resource you are trying to access.</p>"
+            "description": "<p>Not Found We couldn't find the resource you are trying to access</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "405",
-            "description": "<p>Method Not Allowed - API endpoint does not accept the method used.</p>"
+            "description": "<p>Method Not Allowed ; API endpoint does not accept the method used</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "429",
-            "description": "<p>Too Many Requests.</p>"
+            "description": "<p>Too Many Requests</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "500",
-            "description": "<p>Internal Error.</p>"
+            "description": "<p>Internal Server Error</p>"
           }
         ]
       },
@@ -11307,14 +11572,14 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "200",
-            "description": "<p>Success</p>"
+            "description": "<p>Server successfully understood the request</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "200 Response",
-          "content": "HTTP/1.1 200 Success\n{\n}",
+          "title": "200 Success",
+          "content": "HTTP/1.1 200 Response\n{\n}",
           "type": "json"
         }
       ]
@@ -11326,13 +11591,13 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "403",
-            "description": "<p>Forbidden - Token used in transaction is not valid. Check your token and/or permission.</p>"
+            "description": "<p>Forbidden Token used in transaction is not valid - check your token and/or permission</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "500",
-            "description": "<p>Internal Error.</p>"
+            "description": "<p>Internal Server Error</p>"
           }
         ]
       },
@@ -11401,14 +11666,14 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "200",
-            "description": "<p>Success</p>"
+            "description": "<p>Server successfully understood the request</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "200 Response",
-          "content": "HTTP/1.1 200 Success\n{\n}",
+          "title": "200 Success",
+          "content": "HTTP/1.1 200 Response\n{\n}",
           "type": "json"
         }
       ]
@@ -11420,31 +11685,31 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "401",
-            "description": "<p>Require a Bearer Authentication.</p>"
+            "description": "<p>Require a Bearer Authentication</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "404",
-            "description": "<p>Not Found - We couldn't find the resource you are trying to access.</p>"
+            "description": "<p>Not Found We couldn't find the resource you are trying to access</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "405",
-            "description": "<p>Method Not Allowed - API endpoint does not accept the method used.</p>"
+            "description": "<p>Method Not Allowed ; API endpoint does not accept the method used</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "429",
-            "description": "<p>Too Many Requests.</p>"
+            "description": "<p>Too Many Requests</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "500",
-            "description": "<p>Internal Error.</p>"
+            "description": "<p>Internal Server Error</p>"
           }
         ]
       },
@@ -11528,13 +11793,13 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "201",
-            "description": "<p>Created</p>"
+            "description": "<p>Creation of a new resource was successful</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "201 Response",
+          "title": "201 Created",
           "content": "HTTP/1.1 201 Created\n{\n  \"message\": \"Created\",\n  \"id\": \"\",\n  \"code\": 201\n}",
           "type": "json"
         }
@@ -11547,19 +11812,19 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "403",
-            "description": "<p>Forbidden - Token used in transaction is not valid. Check your token and/or permission.</p>"
+            "description": "<p>Forbidden Token used in transaction is not valid - check your token and/or permission</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "412",
-            "description": "<p>Precondition Failed.</p>"
+            "description": "<p>Precondition Failed</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "429",
-            "description": "<p>Too Many Requests.</p>"
+            "description": "<p>Too Many Requests</p>"
           }
         ]
       },
@@ -11631,14 +11896,14 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "200",
-            "description": "<p>Success</p>"
+            "description": "<p>Server successfully understood the request</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "200 Response",
-          "content": "HTTP/1.1 200 Success\n{\n}",
+          "title": "200 Success",
+          "content": "HTTP/1.1 200 Response\n{\n}",
           "type": "json"
         }
       ]
@@ -11650,7 +11915,7 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "403",
-            "description": "<p>Forbidden - Token used in transaction is not valid. Check your token and/or permission.</p>"
+            "description": "<p>Forbidden Token used in transaction is not valid - check your token and/or permission</p>"
           }
         ]
       },
@@ -11707,13 +11972,13 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "201",
-            "description": "<p>Created</p>"
+            "description": "<p>Creation of a new resource was successful</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "201 Response",
+          "title": "201 Created",
           "content": "HTTP/1.1 201 Created\n{\n  \"message\": \"Created\",\n  \"id\": \"\",\n  \"code\": 201\n}",
           "type": "json"
         }
@@ -11726,25 +11991,25 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "403",
-            "description": "<p>Forbidden - Token used in transaction is not valid. Check your token and/or permission.</p>"
+            "description": "<p>Forbidden Token used in transaction is not valid - check your token and/or permission</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "404",
-            "description": "<p>Not Found - We couldn't find the resource you are trying to access.</p>"
+            "description": "<p>Not Found We couldn't find the resource you are trying to access</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "412",
-            "description": "<p>Precondition Failed.</p>"
+            "description": "<p>Precondition Failed</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "429",
-            "description": "<p>Too Many Requests.</p>"
+            "description": "<p>Too Many Requests</p>"
           }
         ]
       },
@@ -11803,14 +12068,14 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "200",
-            "description": "<p>Success</p>"
+            "description": "<p>Server successfully understood the request</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "200 Response",
-          "content": "HTTP/1.1 200 Success\n{\n}",
+          "title": "200 Success",
+          "content": "HTTP/1.1 200 Response\n{\n}",
           "type": "json"
         }
       ]
@@ -11822,19 +12087,19 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "404",
-            "description": "<p>Not Found - We couldn't find the resource you are trying to access.</p>"
+            "description": "<p>Not Found We couldn't find the resource you are trying to access</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "412",
-            "description": "<p>Precondition Failed.</p>"
+            "description": "<p>Precondition Failed</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "500",
-            "description": "<p>Internal Error.</p>"
+            "description": "<p>Internal Server Error</p>"
           }
         ]
       },
@@ -11913,14 +12178,14 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "200",
-            "description": "<p>Success</p>"
+            "description": "<p>Server successfully understood the request</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "200 Response",
-          "content": "HTTP/1.1 200 Success\n{\n}",
+          "title": "200 Success",
+          "content": "HTTP/1.1 200 Response\n{\n}",
           "type": "json"
         }
       ]
@@ -11932,13 +12197,13 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "403",
-            "description": "<p>Forbidden - Token used in transaction is not valid. Check your token and/or permission.</p>"
+            "description": "<p>Forbidden Token used in transaction is not valid - check your token and/or permission</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "404",
-            "description": "<p>Not Found - We couldn't find the resource you are trying to access.</p>"
+            "description": "<p>Not Found We couldn't find the resource you are trying to access</p>"
           }
         ]
       },
@@ -12020,13 +12285,13 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "201",
-            "description": "<p>Created</p>"
+            "description": "<p>Creation of a new resource was successful</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "201 Response",
+          "title": "201 Created",
           "content": "HTTP/1.1 201 Created\n{\n  \"message\": \"Created\",\n  \"id\": \"\",\n  \"code\": 201\n}",
           "type": "json"
         }
@@ -12039,19 +12304,19 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "403",
-            "description": "<p>Forbidden - Token used in transaction is not valid. Check your token and/or permission.</p>"
+            "description": "<p>Forbidden Token used in transaction is not valid - check your token and/or permission</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "412",
-            "description": "<p>Precondition Failed.</p>"
+            "description": "<p>Precondition Failed</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "429",
-            "description": "<p>Too Many Requests.</p>"
+            "description": "<p>Too Many Requests</p>"
           }
         ]
       },
@@ -12130,14 +12395,14 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "200",
-            "description": "<p>Success</p>"
+            "description": "<p>Server successfully understood the request</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "200 Response",
-          "content": "HTTP/1.1 200 Success\n{\n}",
+          "title": "200 Success",
+          "content": "HTTP/1.1 200 Response\n{\n}",
           "type": "json"
         }
       ]
@@ -12149,13 +12414,13 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "403",
-            "description": "<p>Forbidden - Token used in transaction is not valid. Check your token and/or permission.</p>"
+            "description": "<p>Forbidden Token used in transaction is not valid - check your token and/or permission</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "404",
-            "description": "<p>Not Found - We couldn't find the resource you are trying to access.</p>"
+            "description": "<p>Not Found We couldn't find the resource you are trying to access</p>"
           }
         ]
       },
@@ -12229,14 +12494,14 @@ define({ "api": [
             "group": "Success 200",
             "optional": false,
             "field": "200",
-            "description": "<p>Success</p>"
+            "description": "<p>Server successfully understood the request</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "200 Response",
-          "content": "HTTP/1.1 200 Success\n{\n}",
+          "title": "200 Success",
+          "content": "HTTP/1.1 200 Response\n{\n}",
           "type": "json"
         }
       ]
@@ -12248,13 +12513,13 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "403",
-            "description": "<p>Forbidden - Token used in transaction is not valid. Check your token and/or permission.</p>"
+            "description": "<p>Forbidden Token used in transaction is not valid - check your token and/or permission</p>"
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "404",
-            "description": "<p>Not Found - We couldn't find the resource you are trying to access.</p>"
+            "description": "<p>Not Found We couldn't find the resource you are trying to access</p>"
           }
         ]
       },
