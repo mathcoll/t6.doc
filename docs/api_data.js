@@ -125,6 +125,13 @@ define({ "api": [
       },
       {
         "group": "Body",
+        "type": "String",
+        "optional": true,
+        "field": "retention",
+        "description": "<p>Retention Policy to store data to</p>"
+      },
+      {
+        "group": "Body",
         "type": "Object",
         "optional": true,
         "field": "influx_db_cloud",
@@ -421,6 +428,13 @@ define({ "api": [
             "optional": true,
             "field": "height",
             "description": "<p>output height of SVG chart</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "retention",
+            "description": "<p>Retention Policy to get data from</p>"
           }
         ]
       }
@@ -568,6 +582,12 @@ define({ "api": [
           {
             "group": "Error 4xx",
             "optional": false,
+            "field": "412",
+            "description": "<p>Precondition Failed</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
             "field": "429",
             "description": "<p>Too Many Requests</p>"
           },
@@ -593,6 +613,11 @@ define({ "api": [
         {
           "title": "405 Response",
           "content": "HTTP/1.1 405 Method Not Allowed\n{\n  \"message\": \"Not Authorized\",\n  \"id\": \"\",\n  \"code\": 405\n}",
+          "type": "json"
+        },
+        {
+          "title": "412 Response",
+          "content": "HTTP/1.1 412 Precondition Failed\n{\n  \"message\": \"Precondition Failed\",\n  \"id\": \"\",\n  \"code\": 412\n}",
           "type": "json"
         },
         {
@@ -2002,7 +2027,7 @@ define({ "api": [
   },
   {
     "type": "get",
-    "url": "/objects/:object_id",
+    "url": "/objects/:object_id/public\"",
     "title": "Get Public Object",
     "name": "Get_Public_Object",
     "group": "1._Object_and_User_Interfaces",
@@ -2031,7 +2056,7 @@ define({ "api": [
     "groupTitle": "1._Object_and_User_Interfaces",
     "sampleRequest": [
       {
-        "url": "https://api.internetcollaboratif.info/v2.0.1/objects/:object_id"
+        "url": "https://api.internetcollaboratif.info/v2.0.1/objects/:object_id/public\""
       }
     ],
     "header": {
@@ -2241,12 +2266,6 @@ define({ "api": [
           {
             "group": "Error 4xx",
             "optional": false,
-            "field": "405",
-            "description": "<p>Method Not Allowed ; API endpoint does not accept the method used</p>"
-          },
-          {
-            "group": "Error 4xx",
-            "optional": false,
             "field": "429",
             "description": "<p>Too Many Requests</p>"
           },
@@ -2267,11 +2286,6 @@ define({ "api": [
         {
           "title": "404 Response",
           "content": "HTTP/1.1 404 Not Found\n{\n  \"message\": \"Not Found\",\n  \"id\": \"\",\n  \"code\": 404\n}",
-          "type": "json"
-        },
-        {
-          "title": "405 Response",
-          "content": "HTTP/1.1 405 Method Not Allowed\n{\n  \"message\": \"Not Authorized\",\n  \"id\": \"\",\n  \"code\": 405\n}",
           "type": "json"
         },
         {
@@ -2614,6 +2628,26 @@ define({ "api": [
     "name": "Explore_Boxplot",
     "group": "10._Exploratory_Data_Analysis_EDA",
     "version": "2.0.1",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "start",
+            "description": "<p>Timestamp or formatted date YYYY-MM-DD HH:MM:SS</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "end",
+            "description": "<p>Timestamp or formatted date YYYY-MM-DD HH:MM:SS</p>"
+          }
+        ]
+      }
+    },
     "filename": "/home/mathieu/Projets/2019/internetcollaboratif.info/t6/routes/exploration.js",
     "groupTitle": "10._Exploratory_Data_Analysis_EDA",
     "sampleRequest": [
@@ -2678,6 +2712,12 @@ define({ "api": [
             "optional": false,
             "field": "404",
             "description": "<p>Not Found We couldn't find the resource you are trying to access</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "412",
+            "description": "<p>Precondition Failed</p>"
           }
         ]
       },
@@ -2685,6 +2725,11 @@ define({ "api": [
         {
           "title": "404 Response",
           "content": "HTTP/1.1 404 Not Found\n{\n  \"message\": \"Not Found\",\n  \"id\": \"\",\n  \"code\": 404\n}",
+          "type": "json"
+        },
+        {
+          "title": "412 Response",
+          "content": "HTTP/1.1 412 Precondition Failed\n{\n  \"message\": \"Precondition Failed\",\n  \"id\": \"\",\n  \"code\": 412\n}",
           "type": "json"
         }
       ]
@@ -2710,14 +2755,14 @@ define({ "api": [
           },
           {
             "group": "Parameter",
-            "type": "Integer",
+            "type": "String",
             "optional": true,
             "field": "start",
             "description": "<p>Timestamp or formatted date YYYY-MM-DD HH:MM:SS</p>"
           },
           {
             "group": "Parameter",
-            "type": "Integer",
+            "type": "String",
             "optional": true,
             "field": "end",
             "description": "<p>Timestamp or formatted date YYYY-MM-DD HH:MM:SS</p>"
@@ -2881,6 +2926,12 @@ define({ "api": [
           {
             "group": "Error 4xx",
             "optional": false,
+            "field": "412",
+            "description": "<p>Precondition Failed</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
             "field": "429",
             "description": "<p>Too Many Requests</p>"
           },
@@ -2909,6 +2960,11 @@ define({ "api": [
           "type": "json"
         },
         {
+          "title": "412 Response",
+          "content": "HTTP/1.1 412 Precondition Failed\n{\n  \"message\": \"Precondition Failed\",\n  \"id\": \"\",\n  \"code\": 412\n}",
+          "type": "json"
+        },
+        {
           "title": "429 Response",
           "content": "HTTP/1.1 429 Too Many Requests\n{\n  \"message\": \"Too Many Requests\",\n  \"id\": \"\",\n  \"code\": 429\n}",
           "type": "json"
@@ -2924,7 +2980,7 @@ define({ "api": [
   {
     "type": "get",
     "url": "/exploration/:flow_id/exploration",
-    "title": "Get Exploration",
+    "title": "Explore Flows",
     "name": "Explore_Flows",
     "group": "10._Exploratory_Data_Analysis_EDA",
     "version": "2.0.1",
@@ -2958,14 +3014,14 @@ define({ "api": [
           },
           {
             "group": "Parameter",
-            "type": "Integer",
+            "type": "String",
             "optional": true,
             "field": "start",
             "description": "<p>Timestamp or formatted date YYYY-MM-DD HH:MM:SS</p>"
           },
           {
             "group": "Parameter",
-            "type": "Integer",
+            "type": "String",
             "optional": true,
             "field": "end",
             "description": "<p>Timestamp or formatted date YYYY-MM-DD HH:MM:SS</p>"
@@ -3274,14 +3330,14 @@ define({ "api": [
           },
           {
             "group": "Parameter",
-            "type": "Integer",
+            "type": "String",
             "optional": true,
             "field": "start",
             "description": "<p>Timestamp or formatted date YYYY-MM-DD HH:MM:SS</p>"
           },
           {
             "group": "Parameter",
-            "type": "Integer",
+            "type": "String",
             "optional": true,
             "field": "end",
             "description": "<p>Timestamp or formatted date YYYY-MM-DD HH:MM:SS</p>"
@@ -3437,6 +3493,12 @@ define({ "api": [
           {
             "group": "Error 4xx",
             "optional": false,
+            "field": "412",
+            "description": "<p>Precondition Failed</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
             "field": "429",
             "description": "<p>Too Many Requests</p>"
           },
@@ -3462,6 +3524,11 @@ define({ "api": [
         {
           "title": "405 Response",
           "content": "HTTP/1.1 405 Method Not Allowed\n{\n  \"message\": \"Not Authorized\",\n  \"id\": \"\",\n  \"code\": 405\n}",
+          "type": "json"
+        },
+        {
+          "title": "412 Response",
+          "content": "HTTP/1.1 412 Precondition Failed\n{\n  \"message\": \"Precondition Failed\",\n  \"id\": \"\",\n  \"code\": 412\n}",
           "type": "json"
         },
         {
@@ -3497,14 +3564,14 @@ define({ "api": [
           },
           {
             "group": "Parameter",
-            "type": "Integer",
+            "type": "String",
             "optional": true,
             "field": "start",
             "description": "<p>Timestamp or formatted date YYYY-MM-DD HH:MM:SS</p>"
           },
           {
             "group": "Parameter",
-            "type": "Integer",
+            "type": "String",
             "optional": true,
             "field": "end",
             "description": "<p>Timestamp or formatted date YYYY-MM-DD HH:MM:SS</p>"
@@ -3693,6 +3760,12 @@ define({ "api": [
           {
             "group": "Error 4xx",
             "optional": false,
+            "field": "412",
+            "description": "<p>Precondition Failed</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
             "field": "429",
             "description": "<p>Too Many Requests</p>"
           },
@@ -3718,6 +3791,11 @@ define({ "api": [
         {
           "title": "405 Response",
           "content": "HTTP/1.1 405 Method Not Allowed\n{\n  \"message\": \"Not Authorized\",\n  \"id\": \"\",\n  \"code\": 405\n}",
+          "type": "json"
+        },
+        {
+          "title": "412 Response",
+          "content": "HTTP/1.1 412 Precondition Failed\n{\n  \"message\": \"Precondition Failed\",\n  \"id\": \"\",\n  \"code\": 412\n}",
           "type": "json"
         },
         {
@@ -3808,6 +3886,20 @@ define({ "api": [
             "optional": false,
             "field": "expectedValue",
             "description": "<p>Expected value of the population mean</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "start",
+            "description": "<p>Timestamp or formatted date YYYY-MM-DD HH:MM:SS</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "end",
+            "description": "<p>Timestamp or formatted date YYYY-MM-DD HH:MM:SS</p>"
           }
         ]
       }
@@ -3913,6 +4005,12 @@ define({ "api": [
           {
             "group": "Error 4xx",
             "optional": false,
+            "field": "412",
+            "description": "<p>Precondition Failed</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
             "field": "429",
             "description": "<p>Too Many Requests</p>"
           },
@@ -3938,6 +4036,11 @@ define({ "api": [
         {
           "title": "405 Response",
           "content": "HTTP/1.1 405 Method Not Allowed\n{\n  \"message\": \"Not Authorized\",\n  \"id\": \"\",\n  \"code\": 405\n}",
+          "type": "json"
+        },
+        {
+          "title": "412 Response",
+          "content": "HTTP/1.1 412 Precondition Failed\n{\n  \"message\": \"Precondition Failed\",\n  \"id\": \"\",\n  \"code\": 412\n}",
           "type": "json"
         },
         {
@@ -3969,6 +4072,20 @@ define({ "api": [
             "optional": false,
             "field": "flow_id",
             "description": "<p>Flow ID to explore</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "start",
+            "description": "<p>Timestamp or formatted date YYYY-MM-DD HH:MM:SS</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "end",
+            "description": "<p>Timestamp or formatted date YYYY-MM-DD HH:MM:SS</p>"
           }
         ]
       }
@@ -4053,6 +4170,12 @@ define({ "api": [
           {
             "group": "Error 4xx",
             "optional": false,
+            "field": "412",
+            "description": "<p>Precondition Failed</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
             "field": "429",
             "description": "<p>Too Many Requests</p>"
           },
@@ -4078,6 +4201,11 @@ define({ "api": [
         {
           "title": "405 Response",
           "content": "HTTP/1.1 405 Method Not Allowed\n{\n  \"message\": \"Not Authorized\",\n  \"id\": \"\",\n  \"code\": 405\n}",
+          "type": "json"
+        },
+        {
+          "title": "412 Response",
+          "content": "HTTP/1.1 412 Precondition Failed\n{\n  \"message\": \"Precondition Failed\",\n  \"id\": \"\",\n  \"code\": 412\n}",
           "type": "json"
         },
         {
@@ -4116,6 +4244,20 @@ define({ "api": [
             "optional": false,
             "field": "n",
             "description": "<p>Number of rows</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "start",
+            "description": "<p>Timestamp or formatted date YYYY-MM-DD HH:MM:SS</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "end",
+            "description": "<p>Timestamp or formatted date YYYY-MM-DD HH:MM:SS</p>"
           }
         ]
       }
@@ -4200,6 +4342,12 @@ define({ "api": [
           {
             "group": "Error 4xx",
             "optional": false,
+            "field": "412",
+            "description": "<p>Precondition Failed</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
             "field": "429",
             "description": "<p>Too Many Requests</p>"
           },
@@ -4225,6 +4373,11 @@ define({ "api": [
         {
           "title": "405 Response",
           "content": "HTTP/1.1 405 Method Not Allowed\n{\n  \"message\": \"Not Authorized\",\n  \"id\": \"\",\n  \"code\": 405\n}",
+          "type": "json"
+        },
+        {
+          "title": "412 Response",
+          "content": "HTTP/1.1 412 Precondition Failed\n{\n  \"message\": \"Precondition Failed\",\n  \"id\": \"\",\n  \"code\": 412\n}",
           "type": "json"
         },
         {
@@ -4347,6 +4500,12 @@ define({ "api": [
           {
             "group": "Error 4xx",
             "optional": false,
+            "field": "412",
+            "description": "<p>Precondition Failed</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
             "field": "429",
             "description": "<p>Too Many Requests</p>"
           },
@@ -4372,6 +4531,11 @@ define({ "api": [
         {
           "title": "405 Response",
           "content": "HTTP/1.1 405 Method Not Allowed\n{\n  \"message\": \"Not Authorized\",\n  \"id\": \"\",\n  \"code\": 405\n}",
+          "type": "json"
+        },
+        {
+          "title": "412 Response",
+          "content": "HTTP/1.1 412 Precondition Failed\n{\n  \"message\": \"Precondition Failed\",\n  \"id\": \"\",\n  \"code\": 412\n}",
           "type": "json"
         },
         {
@@ -4406,14 +4570,14 @@ define({ "api": [
           },
           {
             "group": "Parameter",
-            "type": "Integer",
+            "type": "String",
             "optional": true,
             "field": "start",
             "description": "<p>Timestamp or formatted date YYYY-MM-DD HH:MM:SS</p>"
           },
           {
             "group": "Parameter",
-            "type": "Integer",
+            "type": "String",
             "optional": true,
             "field": "end",
             "description": "<p>Timestamp or formatted date YYYY-MM-DD HH:MM:SS</p>"
@@ -4588,6 +4752,26 @@ define({ "api": [
     "name": "Get_Explore_Plot_line",
     "group": "10._Exploratory_Data_Analysis_EDA",
     "version": "2.0.1",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "start",
+            "description": "<p>Timestamp or formatted date YYYY-MM-DD HH:MM:SS</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "end",
+            "description": "<p>Timestamp or formatted date YYYY-MM-DD HH:MM:SS</p>"
+          }
+        ]
+      }
+    },
     "filename": "/home/mathieu/Projets/2019/internetcollaboratif.info/t6/routes/exploration.js",
     "groupTitle": "10._Exploratory_Data_Analysis_EDA",
     "sampleRequest": [
@@ -4652,6 +4836,12 @@ define({ "api": [
             "optional": false,
             "field": "404",
             "description": "<p>Not Found We couldn't find the resource you are trying to access</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "412",
+            "description": "<p>Precondition Failed</p>"
           }
         ]
       },
@@ -4659,6 +4849,692 @@ define({ "api": [
         {
           "title": "404 Response",
           "content": "HTTP/1.1 404 Not Found\n{\n  \"message\": \"Not Found\",\n  \"id\": \"\",\n  \"code\": 404\n}",
+          "type": "json"
+        },
+        {
+          "title": "412 Response",
+          "content": "HTTP/1.1 412 Precondition Failed\n{\n  \"message\": \"Precondition Failed\",\n  \"id\": \"\",\n  \"code\": 412\n}",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "post",
+    "url": "/classifications/annotations/",
+    "title": "Add an annotation to a Flow",
+    "name": "Add_an_annotation_to_a_Flow",
+    "group": "11._Classification",
+    "version": "2.0.1",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "uuid-v4",
+            "optional": true,
+            "field": "category_id",
+            "description": "<p>Category Id to be deleted</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "from_ts",
+            "description": "<p>Timestamp or formatted date YYYY-MM-DD HH:MM:SS</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "to_ts",
+            "description": "<p>Timestamp or formatted date YYYY-MM-DD HH:MM:SS</p>"
+          }
+        ]
+      }
+    },
+    "filename": "/home/mathieu/Projets/2019/internetcollaboratif.info/t6/routes/classifications.js",
+    "groupTitle": "11._Classification",
+    "sampleRequest": [
+      {
+        "url": "https://api.internetcollaboratif.info/v2.0.1/classifications/annotations/"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "defaultValue": "Bearer:eyJh...sw5c",
+            "description": "<p>Bearer &lt;Token&gt;</p>"
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": true,
+            "field": "Accept",
+            "defaultValue": "application/json",
+            "description": "<p>application/json</p>"
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": true,
+            "field": "Content-Type",
+            "defaultValue": "application/json",
+            "description": "<p>application/json</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "optional": false,
+            "field": "200",
+            "description": "<p>Server successfully understood the request</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "200 Success",
+          "content": "HTTP/1.1 200 Response\n{\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "403",
+            "description": "<p>Forbidden Token used in transaction is not valid - check your token and/or permission</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "404",
+            "description": "<p>Not Found We couldn't find the resource you are trying to access</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "403 Response",
+          "content": "HTTP/1.1 403 Forbidden\n{\n  \"message\": \"Forbidden\",\n  \"id\": \"\",\n  \"code\": 403\n}",
+          "type": "json"
+        },
+        {
+          "title": "404 Response",
+          "content": "HTTP/1.1 404 Not Found\n{\n  \"message\": \"Not Found\",\n  \"id\": \"\",\n  \"code\": 404\n}",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "post",
+    "url": "/classifications/categories/",
+    "title": "Create new Category for classification",
+    "name": "Create_new_Category_for_classification",
+    "group": "11._Classification",
+    "version": "2.0.1",
+    "body": [
+      {
+        "group": "Body",
+        "type": "String",
+        "optional": true,
+        "field": "name",
+        "defaultValue": "unamed",
+        "description": "<p>Category Name</p>"
+      },
+      {
+        "group": "Body",
+        "type": "String",
+        "optional": true,
+        "field": "color",
+        "description": "<p>Color</p>"
+      },
+      {
+        "group": "Body",
+        "type": "String",
+        "size": "1024",
+        "optional": true,
+        "field": "description",
+        "description": "<p>Object Description</p>"
+      }
+    ],
+    "filename": "/home/mathieu/Projets/2019/internetcollaboratif.info/t6/routes/classifications.js",
+    "groupTitle": "11._Classification",
+    "sampleRequest": [
+      {
+        "url": "https://api.internetcollaboratif.info/v2.0.1/classifications/categories/"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "defaultValue": "Bearer:eyJh...sw5c",
+            "description": "<p>Bearer &lt;Token&gt;</p>"
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": true,
+            "field": "Accept",
+            "defaultValue": "application/json",
+            "description": "<p>application/json</p>"
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": true,
+            "field": "Content-Type",
+            "defaultValue": "application/json",
+            "description": "<p>application/json</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "optional": false,
+            "field": "201",
+            "description": "<p>Creation of a new resource was successful</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "201 Created",
+          "content": "HTTP/1.1 201 Created\n{\n  \"message\": \"Created\",\n  \"id\": \"\",\n  \"code\": 201\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "400",
+            "description": "<p>Bad Request, require a Bearer Authentication or revision is incorrect</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "429",
+            "description": "<p>Too Many Requests</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "400 Response",
+          "content": "HTTP/1.1 400 Bad Request\n{\n  \"message\": \"Bad Request\",\n  \"id\": \"\",\n  \"code\": 400\n}",
+          "type": "json"
+        },
+        {
+          "title": "429 Response",
+          "content": "HTTP/1.1 429 Too Many Requests\n{\n  \"message\": \"Too Many Requests\",\n  \"id\": \"\",\n  \"code\": 429\n}",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "delete",
+    "url": "/classifications/categories/:category_id",
+    "title": "Delete a Category",
+    "name": "Delete_a_Category",
+    "group": "11._Classification",
+    "version": "2.0.1",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "uuid-v4",
+            "optional": true,
+            "field": "category_id",
+            "description": "<p>Category Id to be deleted</p>"
+          }
+        ]
+      }
+    },
+    "filename": "/home/mathieu/Projets/2019/internetcollaboratif.info/t6/routes/classifications.js",
+    "groupTitle": "11._Classification",
+    "sampleRequest": [
+      {
+        "url": "https://api.internetcollaboratif.info/v2.0.1/classifications/categories/:category_id"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "defaultValue": "Bearer:eyJh...sw5c",
+            "description": "<p>Bearer &lt;Token&gt;</p>"
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": true,
+            "field": "Accept",
+            "defaultValue": "application/json",
+            "description": "<p>application/json</p>"
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": true,
+            "field": "Content-Type",
+            "defaultValue": "application/json",
+            "description": "<p>application/json</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "optional": false,
+            "field": "200",
+            "description": "<p>Server successfully understood the request</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "200 Success",
+          "content": "HTTP/1.1 200 Response\n{\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "403",
+            "description": "<p>Forbidden Token used in transaction is not valid - check your token and/or permission</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "404",
+            "description": "<p>Not Found We couldn't find the resource you are trying to access</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "403 Response",
+          "content": "HTTP/1.1 403 Forbidden\n{\n  \"message\": \"Forbidden\",\n  \"id\": \"\",\n  \"code\": 403\n}",
+          "type": "json"
+        },
+        {
+          "title": "404 Response",
+          "content": "HTTP/1.1 404 Not Found\n{\n  \"message\": \"Not Found\",\n  \"id\": \"\",\n  \"code\": 404\n}",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "put",
+    "url": "/classifications/categories/:category_id/",
+    "title": "Edit a Category",
+    "name": "Edit_a_Category",
+    "group": "11._Classification",
+    "version": "2.0.1",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "uuid-v4",
+            "optional": true,
+            "field": "category_id",
+            "description": "<p>Category Id</p>"
+          }
+        ]
+      }
+    },
+    "body": [
+      {
+        "group": "Body",
+        "type": "String",
+        "optional": true,
+        "field": "name",
+        "defaultValue": "unamed",
+        "description": "<p>Category Name</p>"
+      },
+      {
+        "group": "Body",
+        "type": "String",
+        "optional": true,
+        "field": "color",
+        "description": "<p>Color</p>"
+      },
+      {
+        "group": "Body",
+        "type": "String",
+        "size": "1024",
+        "optional": true,
+        "field": "description",
+        "description": "<p>Object Description</p>"
+      }
+    ],
+    "filename": "/home/mathieu/Projets/2019/internetcollaboratif.info/t6/routes/classifications.js",
+    "groupTitle": "11._Classification",
+    "sampleRequest": [
+      {
+        "url": "https://api.internetcollaboratif.info/v2.0.1/classifications/categories/:category_id/"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "defaultValue": "Bearer:eyJh...sw5c",
+            "description": "<p>Bearer &lt;Token&gt;</p>"
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": true,
+            "field": "Accept",
+            "defaultValue": "application/json",
+            "description": "<p>application/json</p>"
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": true,
+            "field": "Content-Type",
+            "defaultValue": "application/json",
+            "description": "<p>application/json</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "optional": false,
+            "field": "200",
+            "description": "<p>Server successfully understood the request</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "200 Success",
+          "content": "HTTP/1.1 200 Response\n{\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "400",
+            "description": "<p>Bad Request, require a Bearer Authentication or revision is incorrect</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "401",
+            "description": "<p>Require a Bearer Authentication</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "403",
+            "description": "<p>Forbidden Token used in transaction is not valid - check your token and/or permission</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "404",
+            "description": "<p>Not Found We couldn't find the resource you are trying to access</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "405",
+            "description": "<p>Method Not Allowed ; API endpoint does not accept the method used</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "409",
+            "description": "<p>Conflict</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "429",
+            "description": "<p>Too Many Requests</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "500",
+            "description": "<p>Internal Server Error</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "400 Response",
+          "content": "HTTP/1.1 400 Bad Request\n{\n  \"message\": \"Bad Request\",\n  \"id\": \"\",\n  \"code\": 400\n}",
+          "type": "json"
+        },
+        {
+          "title": "401 Response",
+          "content": "HTTP/1.1 401 Not Authorized\n{\n  \"message\": \"Not Authorized\",\n  \"id\": \"\",\n  \"code\": 401\n}",
+          "type": "json"
+        },
+        {
+          "title": "403 Response",
+          "content": "HTTP/1.1 403 Forbidden\n{\n  \"message\": \"Forbidden\",\n  \"id\": \"\",\n  \"code\": 403\n}",
+          "type": "json"
+        },
+        {
+          "title": "404 Response",
+          "content": "HTTP/1.1 404 Not Found\n{\n  \"message\": \"Not Found\",\n  \"id\": \"\",\n  \"code\": 404\n}",
+          "type": "json"
+        },
+        {
+          "title": "405 Response",
+          "content": "HTTP/1.1 405 Method Not Allowed\n{\n  \"message\": \"Not Authorized\",\n  \"id\": \"\",\n  \"code\": 405\n}",
+          "type": "json"
+        },
+        {
+          "title": "409 Response",
+          "content": "HTTP/1.1 409 conflict\n{\n  \"message\": \"conflict\",\n  \"id\": \"\",\n  \"code\": 409\n}",
+          "type": "json"
+        },
+        {
+          "title": "429 Response",
+          "content": "HTTP/1.1 429 Too Many Requests\n{\n  \"message\": \"Too Many Requests\",\n  \"id\": \"\",\n  \"code\": 429\n}",
+          "type": "json"
+        },
+        {
+          "title": "500 Response",
+          "content": "HTTP/1.1 500 Internal Error\n{\n  \"message\": \"Internal Error\",\n  \"id\": \"\",\n  \"code\": 500\n}",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "get",
+    "url": "/classifications/categories/:category_id",
+    "title": "Get Category of classification",
+    "name": "Get_Category_of_classification",
+    "group": "11._Classification",
+    "version": "2.0.1",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "uuid-v4",
+            "optional": true,
+            "field": "category_id",
+            "description": "<p>Category Id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "name",
+            "description": "<p>Category name</p>"
+          }
+        ]
+      }
+    },
+    "filename": "/home/mathieu/Projets/2019/internetcollaboratif.info/t6/routes/classifications.js",
+    "groupTitle": "11._Classification",
+    "sampleRequest": [
+      {
+        "url": "https://api.internetcollaboratif.info/v2.0.1/classifications/categories/:category_id"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "defaultValue": "Bearer:eyJh...sw5c",
+            "description": "<p>Bearer &lt;Token&gt;</p>"
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": true,
+            "field": "Accept",
+            "defaultValue": "application/json",
+            "description": "<p>application/json</p>"
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": true,
+            "field": "Content-Type",
+            "defaultValue": "application/json",
+            "description": "<p>application/json</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "optional": false,
+            "field": "200",
+            "description": "<p>Server successfully understood the request</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "200 Success",
+          "content": "HTTP/1.1 200 Response\n{\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "401",
+            "description": "<p>Require a Bearer Authentication</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "405",
+            "description": "<p>Method Not Allowed ; API endpoint does not accept the method used</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "429",
+            "description": "<p>Too Many Requests</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "500",
+            "description": "<p>Internal Server Error</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "401 Response",
+          "content": "HTTP/1.1 401 Not Authorized\n{\n  \"message\": \"Not Authorized\",\n  \"id\": \"\",\n  \"code\": 401\n}",
+          "type": "json"
+        },
+        {
+          "title": "405 Response",
+          "content": "HTTP/1.1 405 Method Not Allowed\n{\n  \"message\": \"Not Authorized\",\n  \"id\": \"\",\n  \"code\": 405\n}",
+          "type": "json"
+        },
+        {
+          "title": "429 Response",
+          "content": "HTTP/1.1 429 Too Many Requests\n{\n  \"message\": \"Too Many Requests\",\n  \"id\": \"\",\n  \"code\": 429\n}",
+          "type": "json"
+        },
+        {
+          "title": "500 Response",
+          "content": "HTTP/1.1 500 Internal Error\n{\n  \"message\": \"Internal Error\",\n  \"id\": \"\",\n  \"code\": 500\n}",
           "type": "json"
         }
       ]
@@ -4758,6 +5634,13 @@ define({ "api": [
         "optional": true,
         "field": "objects",
         "description": "<p>List of Object Ids</p>"
+      },
+      {
+        "group": "Body",
+        "type": "String",
+        "optional": true,
+        "field": "retention",
+        "description": "<p>] Retention Policy</p>"
       },
       {
         "group": "Body",
@@ -5063,6 +5946,13 @@ define({ "api": [
       },
       {
         "group": "Body",
+        "type": "String",
+        "optional": true,
+        "field": "retention",
+        "description": "<p>] Retention Policy</p>"
+      },
+      {
+        "group": "Body",
         "type": "Object",
         "optional": true,
         "field": "influx_db_cloud",
@@ -5207,6 +6097,160 @@ define({ "api": [
         {
           "title": "409 Response",
           "content": "HTTP/1.1 409 conflict\n{\n  \"message\": \"conflict\",\n  \"id\": \"\",\n  \"code\": 409\n}",
+          "type": "json"
+        },
+        {
+          "title": "429 Response",
+          "content": "HTTP/1.1 429 Too Many Requests\n{\n  \"message\": \"Too Many Requests\",\n  \"id\": \"\",\n  \"code\": 429\n}",
+          "type": "json"
+        },
+        {
+          "title": "500 Response",
+          "content": "HTTP/1.1 500 Internal Error\n{\n  \"message\": \"Internal Error\",\n  \"id\": \"\",\n  \"code\": 500\n}",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "get",
+    "url": "/flows/:flow_id/categories",
+    "title": "Get Classification Categories from a Flow",
+    "name": "Get_Classification_Categories_from_a_Flow",
+    "group": "2._Flow",
+    "version": "2.0.1",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "uuid-v4",
+            "optional": true,
+            "field": "flow_id",
+            "description": "<p>Flow Id which is selected as a track on other Flows</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "start",
+            "description": "<p>Timestamp or formatted date YYYY-MM-DD HH:MM:SS</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "end",
+            "description": "<p>Timestamp or formatted date YYYY-MM-DD HH:MM:SS</p>"
+          }
+        ]
+      }
+    },
+    "filename": "/home/mathieu/Projets/2019/internetcollaboratif.info/t6/routes/flows.js",
+    "groupTitle": "2._Flow",
+    "sampleRequest": [
+      {
+        "url": "https://api.internetcollaboratif.info/v2.0.1/flows/:flow_id/categories"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "defaultValue": "Bearer:eyJh...sw5c",
+            "description": "<p>Bearer &lt;Token&gt;</p>"
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": true,
+            "field": "Accept",
+            "defaultValue": "application/json",
+            "description": "<p>application/json</p>"
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": true,
+            "field": "Content-Type",
+            "defaultValue": "application/json",
+            "description": "<p>application/json</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "optional": false,
+            "field": "200",
+            "description": "<p>Server successfully understood the request</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "200 Success",
+          "content": "HTTP/1.1 200 Response\n{\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "401",
+            "description": "<p>Require a Bearer Authentication</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "404",
+            "description": "<p>Not Found We couldn't find the resource you are trying to access</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "405",
+            "description": "<p>Method Not Allowed ; API endpoint does not accept the method used</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "429",
+            "description": "<p>Too Many Requests</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "500",
+            "description": "<p>Internal Server Error</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "401 Response",
+          "content": "HTTP/1.1 401 Not Authorized\n{\n  \"message\": \"Not Authorized\",\n  \"id\": \"\",\n  \"code\": 401\n}",
+          "type": "json"
+        },
+        {
+          "title": "404 Response",
+          "content": "HTTP/1.1 404 Not Found\n{\n  \"message\": \"Not Found\",\n  \"id\": \"\",\n  \"code\": 404\n}",
+          "type": "json"
+        },
+        {
+          "title": "405 Response",
+          "content": "HTTP/1.1 405 Method Not Allowed\n{\n  \"message\": \"Not Authorized\",\n  \"id\": \"\",\n  \"code\": 405\n}",
           "type": "json"
         },
         {
@@ -6317,8 +7361,8 @@ define({ "api": [
           {
             "group": "Error 4xx",
             "optional": false,
-            "field": "404",
-            "description": "<p>Not Found We couldn't find the resource you are trying to access</p>"
+            "field": "401",
+            "description": "<p>Require a Bearer Authentication</p>"
           }
         ]
       },
@@ -6329,8 +7373,8 @@ define({ "api": [
           "type": "json"
         },
         {
-          "title": "404 Response",
-          "content": "HTTP/1.1 404 Not Found\n{\n  \"message\": \"Not Found\",\n  \"id\": \"\",\n  \"code\": 404\n}",
+          "title": "401 Response",
+          "content": "HTTP/1.1 401 Not Authorized\n{\n  \"message\": \"Not Authorized\",\n  \"id\": \"\",\n  \"code\": 401\n}",
           "type": "json"
         }
       ]
@@ -7874,56 +8918,12 @@ define({ "api": [
           {
             "group": "Error 4xx",
             "optional": false,
-            "field": "401",
-            "description": "<p>Require a Bearer Authentication</p>"
-          },
-          {
-            "group": "Error 4xx",
-            "optional": false,
-            "field": "404",
-            "description": "<p>Not Found We couldn't find the resource you are trying to access</p>"
-          },
-          {
-            "group": "Error 4xx",
-            "optional": false,
-            "field": "405",
-            "description": "<p>Method Not Allowed ; API endpoint does not accept the method used</p>"
-          },
-          {
-            "group": "Error 4xx",
-            "optional": false,
-            "field": "429",
-            "description": "<p>Too Many Requests</p>"
-          },
-          {
-            "group": "Error 4xx",
-            "optional": false,
             "field": "500",
             "description": "<p>Internal Server Error</p>"
           }
         ]
       },
       "examples": [
-        {
-          "title": "401 Response",
-          "content": "HTTP/1.1 401 Not Authorized\n{\n  \"message\": \"Not Authorized\",\n  \"id\": \"\",\n  \"code\": 401\n}",
-          "type": "json"
-        },
-        {
-          "title": "404 Response",
-          "content": "HTTP/1.1 404 Not Found\n{\n  \"message\": \"Not Found\",\n  \"id\": \"\",\n  \"code\": 404\n}",
-          "type": "json"
-        },
-        {
-          "title": "405 Response",
-          "content": "HTTP/1.1 405 Method Not Allowed\n{\n  \"message\": \"Not Authorized\",\n  \"id\": \"\",\n  \"code\": 405\n}",
-          "type": "json"
-        },
-        {
-          "title": "429 Response",
-          "content": "HTTP/1.1 429 Too Many Requests\n{\n  \"message\": \"Too Many Requests\",\n  \"id\": \"\",\n  \"code\": 429\n}",
-          "type": "json"
-        },
         {
           "title": "500 Response",
           "content": "HTTP/1.1 500 Internal Error\n{\n  \"message\": \"Internal Error\",\n  \"id\": \"\",\n  \"code\": 500\n}",
@@ -9051,9 +10051,9 @@ define({ "api": [
   },
   {
     "type": "get",
-    "url": "/notifications/mail/newsletter/count",
-    "title": "Count Newsletter subscribers",
-    "name": "Count_Newsletter_subscribers",
+    "url": "/notifications/subscribers/newsletter/count",
+    "title": "Count subscribers (Newsletter or Pushs)",
+    "name": "Count_subscribers_(Newsletter_or_Pushs)",
     "group": "9._Notifications",
     "version": "2.0.1",
     "permission": [
@@ -9067,7 +10067,7 @@ define({ "api": [
     "groupTitle": "9._Notifications",
     "sampleRequest": [
       {
-        "url": "https://api.internetcollaboratif.info/v2.0.1/notifications/mail/newsletter/count"
+        "url": "https://api.internetcollaboratif.info/v2.0.1/notifications/subscribers/newsletter/count"
       }
     ],
     "header": {
@@ -9125,6 +10125,12 @@ define({ "api": [
           {
             "group": "Error 4xx",
             "optional": false,
+            "field": "401",
+            "description": "<p>Require a Bearer Authentication</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
             "field": "403",
             "description": "<p>Forbidden Token used in transaction is not valid - check your token and/or permission</p>"
           },
@@ -9137,6 +10143,11 @@ define({ "api": [
         ]
       },
       "examples": [
+        {
+          "title": "401 Response",
+          "content": "HTTP/1.1 401 Not Authorized\n{\n  \"message\": \"Not Authorized\",\n  \"id\": \"\",\n  \"code\": 401\n}",
+          "type": "json"
+        },
         {
           "title": "403 Response",
           "content": "HTTP/1.1 403 Forbidden\n{\n  \"message\": \"Forbidden\",\n  \"id\": \"\",\n  \"code\": 403\n}",
@@ -9152,70 +10163,33 @@ define({ "api": [
   },
   {
     "type": "get",
-    "url": "/notifications/push/count",
-    "title": "Count Push subscribers",
-    "name": "Count_Push_subscribers",
+    "url": "/notifications/list/subscribed",
+    "title": "List subscribed notifications",
+    "name": "List_subscribed_notifications",
     "group": "9._Notifications",
     "version": "2.0.1",
-    "permission": [
-      {
-        "name": "AuthAdmin",
-        "title": "Admin access rights needed.",
-        "description": "<p>Only t6 Administrator users have permission to this Endpoint.</p>"
-      }
-    ],
     "filename": "/home/mathieu/Projets/2019/internetcollaboratif.info/t6/routes/notifications.js",
     "groupTitle": "9._Notifications",
     "sampleRequest": [
       {
-        "url": "https://api.internetcollaboratif.info/v2.0.1/notifications/push/count"
+        "url": "https://api.internetcollaboratif.info/v2.0.1/notifications/list/subscribed"
       }
     ],
-    "header": {
-      "fields": {
-        "Header": [
-          {
-            "group": "Header",
-            "type": "String",
-            "optional": false,
-            "field": "Authorization",
-            "defaultValue": "Bearer:eyJh...sw5c",
-            "description": "<p>Bearer &lt;Token&gt;</p>"
-          },
-          {
-            "group": "Header",
-            "type": "String",
-            "optional": true,
-            "field": "Accept",
-            "defaultValue": "application/json",
-            "description": "<p>application/json</p>"
-          },
-          {
-            "group": "Header",
-            "type": "String",
-            "optional": true,
-            "field": "Content-Type",
-            "defaultValue": "application/json",
-            "description": "<p>application/json</p>"
-          }
-        ]
-      }
-    },
     "success": {
       "fields": {
         "Success 200": [
           {
             "group": "Success 200",
             "optional": false,
-            "field": "202",
-            "description": "<p>Server successfully understood the request, it will be done asynchroneously</p>"
+            "field": "200",
+            "description": "<p>Server successfully understood the request</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "202 Accepted",
-          "content": "HTTP/1.1 202 Accepted\n{\n}",
+          "title": "200 Success",
+          "content": "HTTP/1.1 200 Response\n{\n}",
           "type": "json"
         }
       ]
@@ -9228,12 +10202,6 @@ define({ "api": [
             "optional": false,
             "field": "403",
             "description": "<p>Forbidden Token used in transaction is not valid - check your token and/or permission</p>"
-          },
-          {
-            "group": "Error 4xx",
-            "optional": false,
-            "field": "404",
-            "description": "<p>Not Found We couldn't find the resource you are trying to access</p>"
           }
         ]
       },
@@ -9242,20 +10210,15 @@ define({ "api": [
           "title": "403 Response",
           "content": "HTTP/1.1 403 Forbidden\n{\n  \"message\": \"Forbidden\",\n  \"id\": \"\",\n  \"code\": 403\n}",
           "type": "json"
-        },
-        {
-          "title": "404 Response",
-          "content": "HTTP/1.1 404 Not Found\n{\n  \"message\": \"Not Found\",\n  \"id\": \"\",\n  \"code\": 404\n}",
-          "type": "json"
         }
       ]
     }
   },
   {
     "type": "get",
-    "url": "/notifications/mail/newsletter/subscribers",
-    "title": "Get Newsletter subscribers",
-    "name": "Get_Newsletter_subscribers",
+    "url": "/notifications/subscribers/newsletter/list",
+    "title": "List subscribers (Newsletter or Pushs) as csv",
+    "name": "List_subscribers_(Newsletter_or_Pushs)_as_csv",
     "group": "9._Notifications",
     "version": "2.0.1",
     "permission": [
@@ -9269,7 +10232,7 @@ define({ "api": [
     "groupTitle": "9._Notifications",
     "sampleRequest": [
       {
-        "url": "https://api.internetcollaboratif.info/v2.0.1/notifications/mail/newsletter/subscribers"
+        "url": "https://api.internetcollaboratif.info/v2.0.1/notifications/subscribers/newsletter/list"
       }
     ],
     "header": {
@@ -9327,6 +10290,12 @@ define({ "api": [
           {
             "group": "Error 4xx",
             "optional": false,
+            "field": "401",
+            "description": "<p>Require a Bearer Authentication</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
             "field": "403",
             "description": "<p>Forbidden Token used in transaction is not valid - check your token and/or permission</p>"
           },
@@ -9339,6 +10308,11 @@ define({ "api": [
         ]
       },
       "examples": [
+        {
+          "title": "401 Response",
+          "content": "HTTP/1.1 401 Not Authorized\n{\n  \"message\": \"Not Authorized\",\n  \"id\": \"\",\n  \"code\": 401\n}",
+          "type": "json"
+        },
         {
           "title": "403 Response",
           "content": "HTTP/1.1 403 Forbidden\n{\n  \"message\": \"Forbidden\",\n  \"id\": \"\",\n  \"code\": 403\n}",
@@ -9407,7 +10381,7 @@ define({ "api": [
   },
   {
     "type": "get",
-    "url": "/notifications/mail/newsletter/preview/",
+    "url": "/notifications/mail/preview/",
     "title": "Preview html of a Newsletter",
     "name": "Preview_html_of_a_Newsletter",
     "group": "9._Notifications",
@@ -9452,7 +10426,7 @@ define({ "api": [
     "groupTitle": "9._Notifications",
     "sampleRequest": [
       {
-        "url": "https://api.internetcollaboratif.info/v2.0.1/notifications/mail/newsletter/preview/"
+        "url": "https://api.internetcollaboratif.info/v2.0.1/notifications/mail/preview/"
       }
     ],
     "success": {
@@ -9480,15 +10454,149 @@ define({ "api": [
           {
             "group": "Error 4xx",
             "optional": false,
+            "field": "401",
+            "description": "<p>Require a Bearer Authentication</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
             "field": "403",
             "description": "<p>Forbidden Token used in transaction is not valid - check your token and/or permission</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "500",
+            "description": "<p>Internal Server Error</p>"
           }
         ]
       },
       "examples": [
         {
+          "title": "401 Response",
+          "content": "HTTP/1.1 401 Not Authorized\n{\n  \"message\": \"Not Authorized\",\n  \"id\": \"\",\n  \"code\": 401\n}",
+          "type": "json"
+        },
+        {
           "title": "403 Response",
           "content": "HTTP/1.1 403 Forbidden\n{\n  \"message\": \"Forbidden\",\n  \"id\": \"\",\n  \"code\": 403\n}",
+          "type": "json"
+        },
+        {
+          "title": "500 Response",
+          "content": "HTTP/1.1 500 Internal Error\n{\n  \"message\": \"Internal Error\",\n  \"id\": \"\",\n  \"code\": 500\n}",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "post",
+    "url": "/notifications/mail/monthlyreport/plan",
+    "title": "Schedule a newsletter",
+    "name": "Schedule_a_monthlyreport",
+    "group": "9._Notifications",
+    "version": "2.0.1",
+    "permission": [
+      {
+        "name": "AuthAdmin",
+        "title": "Admin access rights needed.",
+        "description": "<p>Only t6 Administrator users have permission to this Endpoint.</p>"
+      }
+    ],
+    "filename": "/home/mathieu/Projets/2019/internetcollaboratif.info/t6/routes/notifications.js",
+    "groupTitle": "9._Notifications",
+    "sampleRequest": [
+      {
+        "url": "https://api.internetcollaboratif.info/v2.0.1/notifications/mail/monthlyreport/plan"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "defaultValue": "Bearer:eyJh...sw5c",
+            "description": "<p>Bearer &lt;Token&gt;</p>"
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": true,
+            "field": "Accept",
+            "defaultValue": "application/json",
+            "description": "<p>application/json</p>"
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": true,
+            "field": "Content-Type",
+            "defaultValue": "application/json",
+            "description": "<p>application/json</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "optional": false,
+            "field": "202",
+            "description": "<p>Server successfully understood the request, it will be done asynchroneously</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "202 Accepted",
+          "content": "HTTP/1.1 202 Accepted\n{\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "401",
+            "description": "<p>Require a Bearer Authentication</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "403",
+            "description": "<p>Forbidden Token used in transaction is not valid - check your token and/or permission</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "404",
+            "description": "<p>Not Found We couldn't find the resource you are trying to access</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "401 Response",
+          "content": "HTTP/1.1 401 Not Authorized\n{\n  \"message\": \"Not Authorized\",\n  \"id\": \"\",\n  \"code\": 401\n}",
+          "type": "json"
+        },
+        {
+          "title": "403 Response",
+          "content": "HTTP/1.1 403 Forbidden\n{\n  \"message\": \"Forbidden\",\n  \"id\": \"\",\n  \"code\": 403\n}",
+          "type": "json"
+        },
+        {
+          "title": "404 Response",
+          "content": "HTTP/1.1 404 Not Found\n{\n  \"message\": \"Not Found\",\n  \"id\": \"\",\n  \"code\": 404\n}",
           "type": "json"
         }
       ]
@@ -9570,6 +10678,12 @@ define({ "api": [
           {
             "group": "Error 4xx",
             "optional": false,
+            "field": "401",
+            "description": "<p>Require a Bearer Authentication</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
             "field": "403",
             "description": "<p>Forbidden Token used in transaction is not valid - check your token and/or permission</p>"
           },
@@ -9582,6 +10696,11 @@ define({ "api": [
         ]
       },
       "examples": [
+        {
+          "title": "401 Response",
+          "content": "HTTP/1.1 401 Not Authorized\n{\n  \"message\": \"Not Authorized\",\n  \"id\": \"\",\n  \"code\": 401\n}",
+          "type": "json"
+        },
         {
           "title": "403 Response",
           "content": "HTTP/1.1 403 Forbidden\n{\n  \"message\": \"Forbidden\",\n  \"id\": \"\",\n  \"code\": 403\n}",
@@ -9709,6 +10828,12 @@ define({ "api": [
           {
             "group": "Error 4xx",
             "optional": false,
+            "field": "401",
+            "description": "<p>Require a Bearer Authentication</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
             "field": "403",
             "description": "<p>Forbidden Token used in transaction is not valid - check your token and/or permission</p>"
           },
@@ -9721,6 +10846,11 @@ define({ "api": [
         ]
       },
       "examples": [
+        {
+          "title": "401 Response",
+          "content": "HTTP/1.1 401 Not Authorized\n{\n  \"message\": \"Not Authorized\",\n  \"id\": \"\",\n  \"code\": 401\n}",
+          "type": "json"
+        },
         {
           "title": "403 Response",
           "content": "HTTP/1.1 403 Forbidden\n{\n  \"message\": \"Forbidden\",\n  \"id\": \"\",\n  \"code\": 403\n}",
@@ -9810,6 +10940,12 @@ define({ "api": [
           {
             "group": "Error 4xx",
             "optional": false,
+            "field": "401",
+            "description": "<p>Require a Bearer Authentication</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
             "field": "403",
             "description": "<p>Forbidden Token used in transaction is not valid - check your token and/or permission</p>"
           },
@@ -9822,6 +10958,123 @@ define({ "api": [
         ]
       },
       "examples": [
+        {
+          "title": "401 Response",
+          "content": "HTTP/1.1 401 Not Authorized\n{\n  \"message\": \"Not Authorized\",\n  \"id\": \"\",\n  \"code\": 401\n}",
+          "type": "json"
+        },
+        {
+          "title": "403 Response",
+          "content": "HTTP/1.1 403 Forbidden\n{\n  \"message\": \"Forbidden\",\n  \"id\": \"\",\n  \"code\": 403\n}",
+          "type": "json"
+        },
+        {
+          "title": "404 Response",
+          "content": "HTTP/1.1 404 Not Found\n{\n  \"message\": \"Not Found\",\n  \"id\": \"\",\n  \"code\": 404\n}",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "post",
+    "url": "/notifications/mail/monthlyreport/send",
+    "title": "Send a scheduled newsletter",
+    "name": "Send_a_scheduled_monthlyreport",
+    "group": "9._Notifications",
+    "version": "2.0.1",
+    "permission": [
+      {
+        "name": "AuthAdmin",
+        "title": "Admin access rights needed.",
+        "description": "<p>Only t6 Administrator users have permission to this Endpoint.</p>"
+      }
+    ],
+    "filename": "/home/mathieu/Projets/2019/internetcollaboratif.info/t6/routes/notifications.js",
+    "groupTitle": "9._Notifications",
+    "sampleRequest": [
+      {
+        "url": "https://api.internetcollaboratif.info/v2.0.1/notifications/mail/monthlyreport/send"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "defaultValue": "Bearer:eyJh...sw5c",
+            "description": "<p>Bearer &lt;Token&gt;</p>"
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": true,
+            "field": "Accept",
+            "defaultValue": "application/json",
+            "description": "<p>application/json</p>"
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": true,
+            "field": "Content-Type",
+            "defaultValue": "application/json",
+            "description": "<p>application/json</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "optional": false,
+            "field": "202",
+            "description": "<p>Server successfully understood the request, it will be done asynchroneously</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "202 Accepted",
+          "content": "HTTP/1.1 202 Accepted\n{\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "401",
+            "description": "<p>Require a Bearer Authentication</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "403",
+            "description": "<p>Forbidden Token used in transaction is not valid - check your token and/or permission</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "404",
+            "description": "<p>Not Found We couldn't find the resource you are trying to access</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "401 Response",
+          "content": "HTTP/1.1 401 Not Authorized\n{\n  \"message\": \"Not Authorized\",\n  \"id\": \"\",\n  \"code\": 401\n}",
+          "type": "json"
+        },
         {
           "title": "403 Response",
           "content": "HTTP/1.1 403 Forbidden\n{\n  \"message\": \"Forbidden\",\n  \"id\": \"\",\n  \"code\": 403\n}",
@@ -9911,6 +11164,12 @@ define({ "api": [
           {
             "group": "Error 4xx",
             "optional": false,
+            "field": "401",
+            "description": "<p>Require a Bearer Authentication</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
             "field": "403",
             "description": "<p>Forbidden Token used in transaction is not valid - check your token and/or permission</p>"
           },
@@ -9923,6 +11182,11 @@ define({ "api": [
         ]
       },
       "examples": [
+        {
+          "title": "401 Response",
+          "content": "HTTP/1.1 401 Not Authorized\n{\n  \"message\": \"Not Authorized\",\n  \"id\": \"\",\n  \"code\": 401\n}",
+          "type": "json"
+        },
         {
           "title": "403 Response",
           "content": "HTTP/1.1 403 Forbidden\n{\n  \"message\": \"Forbidden\",\n  \"id\": \"\",\n  \"code\": 403\n}",
@@ -10042,6 +11306,12 @@ define({ "api": [
           {
             "group": "Error 4xx",
             "optional": false,
+            "field": "401",
+            "description": "<p>Require a Bearer Authentication</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
             "field": "403",
             "description": "<p>Forbidden Token used in transaction is not valid - check your token and/or permission</p>"
           },
@@ -10054,6 +11324,11 @@ define({ "api": [
         ]
       },
       "examples": [
+        {
+          "title": "401 Response",
+          "content": "HTTP/1.1 401 Not Authorized\n{\n  \"message\": \"Not Authorized\",\n  \"id\": \"\",\n  \"code\": 401\n}",
+          "type": "json"
+        },
         {
           "title": "403 Response",
           "content": "HTTP/1.1 403 Forbidden\n{\n  \"message\": \"Forbidden\",\n  \"id\": \"\",\n  \"code\": 403\n}",
@@ -10143,6 +11418,12 @@ define({ "api": [
           {
             "group": "Error 4xx",
             "optional": false,
+            "field": "401",
+            "description": "<p>Require a Bearer Authentication</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
             "field": "403",
             "description": "<p>Forbidden Token used in transaction is not valid - check your token and/or permission</p>"
           },
@@ -10155,6 +11436,11 @@ define({ "api": [
         ]
       },
       "examples": [
+        {
+          "title": "401 Response",
+          "content": "HTTP/1.1 401 Not Authorized\n{\n  \"message\": \"Not Authorized\",\n  \"id\": \"\",\n  \"code\": 401\n}",
+          "type": "json"
+        },
         {
           "title": "403 Response",
           "content": "HTTP/1.1 403 Forbidden\n{\n  \"message\": \"Forbidden\",\n  \"id\": \"\",\n  \"code\": 403\n}",
@@ -10244,6 +11530,12 @@ define({ "api": [
           {
             "group": "Error 4xx",
             "optional": false,
+            "field": "401",
+            "description": "<p>Require a Bearer Authentication</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
             "field": "403",
             "description": "<p>Forbidden Token used in transaction is not valid - check your token and/or permission</p>"
           },
@@ -10256,6 +11548,11 @@ define({ "api": [
         ]
       },
       "examples": [
+        {
+          "title": "401 Response",
+          "content": "HTTP/1.1 401 Not Authorized\n{\n  \"message\": \"Not Authorized\",\n  \"id\": \"\",\n  \"code\": 401\n}",
+          "type": "json"
+        },
         {
           "title": "403 Response",
           "content": "HTTP/1.1 403 Forbidden\n{\n  \"message\": \"Forbidden\",\n  \"id\": \"\",\n  \"code\": 403\n}",

@@ -3,6 +3,7 @@
 <head>
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Loading t6 IoT documentation...</title>
+  <meta name="description" content="__API_DESCRIPTION__">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <link href="vendor/bootstrap.min.css" rel="stylesheet" media="screen">
@@ -14,12 +15,14 @@
   <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
   <script src="vendor/polyfill.js"></script>
 </head>
+
 <body class="container-fluid">
 
+<!-- SIDENAV -->
 <script id="template-sidenav" type="text/x-handlebars-template">
 <nav id="scrollingNav">
   <div class="sidenav-search">
-    <input class="form-control search" type="text" placeholder="{{__ "Filter on t6 IoT doc..."}}">
+    <input class="form-control search" data-action='filter-search' type="text" placeholder="{{__ "Filter on t6 IoT doc..."}}">
     <span class="search-reset">x</span>
   </div>
   <ul class="sidenav nav nav-list list">
@@ -46,6 +49,7 @@
 </nav>
 </script>
 
+<!-- PROJECT -->
 <script id="template-project" type="text/x-handlebars-template">
   <div class="pull-left">
     <h1>{{name}}</h1>
