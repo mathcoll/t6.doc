@@ -20,7 +20,9 @@
 }
 
 .color-primary {
-  color: var(--primary);
+  background: var(--primary);
+  color: var(--white);
+  padding: 0.2em;
 }
 
 .bg-primary {
